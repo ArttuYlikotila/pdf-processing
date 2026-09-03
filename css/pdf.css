@@ -3,232 +3,245 @@
  *
  * This software is licensed under GNU General Public License version 3 or later.
  *
- * For the full copyright and license information, 
- * please see https://www.gnu.org/licenses/gpl-3.0.html or read 
+ * For the full copyright and license information,
+ * please see https://www.gnu.org/licenses/gpl-3.0.html or read
  * the LICENSE.txt file that was distributed with this source code.
  */
 
-@CHARSET "UTF-8";
+/* TODO: This setting is probably not a proper setting and could be removed, has to checked */
+/* @CHARSET "UTF-8"; */
 
 body {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        background-color: #f4f7fb;
-        color: #2c3e50;
-        padding-bottom: 70px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f4f7fb;
+  color: #2c3e50;
+  padding-bottom: 70px;
 }
 
 .top-buffer {
-        margin-top:20px;
+  margin-top: 20px;
 }
 
 .bottom-buffer {
-        margin-bottom:60px;
+  margin-bottom: 60px;
 }
 
 .page-header {
-        width: 100%;
-        min-height: 100px;
-        background-color: #4e008e;
-        border-bottom: none;
-        margin: 0 0 20px;
-        padding: 16px 0;
-        box-shadow: 0 6px 18px rgba(78, 0, 142, 0.2);
+  width: 100%;
+  min-height: 100px;
+  background-color: #4e008e;
+  border-bottom: none;
+  margin: 0 0 20px;
+  padding: 16px 0;
+  box-shadow: 0 6px 18px rgba(78, 0, 142, 0.2);
 }
 
 .logo {
-        height: 54px;
-        width: auto;
-        padding: 0 12px 0 4px;
-        object-fit: contain;
+  height: 54px;
+  width: auto;
+  padding: 0 12px 0 4px;
+  object-fit: contain;
 }
 
 .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        /* Set the fixed height of the footer here */
-        height: 40px;
-        background-color: rgba(255,255,255,0.96);
-        /*margin-bottom: -20px;*/
-        border-top: 1px solid #e2e6ef;
-        box-shadow: 0 -4px 12px rgba(17, 24, 39, 0.08);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 5.5rem;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid #e2e6ef;
+  box-shadow: 0 -4px 12px rgba(17, 24, 39, 0.08);
 }
 
-.page-header a, .page-header a:visited {
-        color: #ffffff;
-        text-decoration: none;
-        outline: 0;
-        line-height: inherit;
+.footer > div.container {
+  padding-top: 1.5rem;
 }
 
-.footer a, .footer a:visited {
-        color: #4e008e;
-        text-decoration: none;
-        outline: 0;
-        line-height: inherit;
+.page-header a,
+.page-header a:visited {
+  color: #ffffff;
+  text-decoration: none;
+  /* This setting should not be used, because this makes it impossible for keyboard user to know which element has the focus */
+  /* outline: 0; */
+  line-height: inherit;
+}
+
+.footer a,
+.footer a:visited {
+  color: #4e008e;
+  text-decoration: none;
+  padding: 0 0.75rem;
+  /* This setting should not be used, because this makes it impossible for keyboard user to know which element has the focus */
+  /* outline: 0; */
 }
 
 .page-header h3 {
-        color: #ffffff;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        margin: 18px 0 12px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        font-size: 18px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 18px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 18px;
 }
 
 .page-header li {
-        width: 90px;
-        margin-top: 16px;
+  width: 90px;
+  margin-top: 16px;
 }
 
 .page-header .nav > li > a {
-        color: #efe6ff;
-        border-radius: 20px;
-        padding: 9px 12px;
-        transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  color: #efe6ff;
+  border-radius: 20px;
+  padding: 9px 12px;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .page-header .nav > li > a:hover,
 .page-header .nav > li > a:focus {
-        background-color: rgba(255, 255, 255, 0.18);
-        color: #ffffff;
-        box-shadow: 0 4px 12px rgba(78, 0, 142, 0.16);
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(78, 0, 142, 0.16);
 }
 
-.h5, h5 {
-        font-size: 16px;
+.h5,
+h5 {
+  font-size: 16px;
 }
 
 .helppage img {
-        max-width: 800px;
-        padding: 50px 0;
+  max-width: 800px;
+  padding: 50px 0;
 }
 
 .lang-selector {
-        padding-top: 46px;
-        color: #efe6ff;
-        text-align: right;
-        white-space: nowrap;
+  padding-top: 46px;
+  color: #efe6ff;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .lang-selector a {
-        color: #efe6ff;
-        font-weight: 600;
+  color: #efe6ff;
+  font-weight: 600;
 }
 
 .content-card {
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 6px 18px rgba(17, 24, 39, 0.12);
-        padding: 20px 24px;
-        margin-bottom: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.12);
+  padding: 20px 24px;
+  margin-bottom: 20px;
 }
 
 .content-card p {
-        margin-bottom: 10px;
-        color: #4a5568;
+  margin-bottom: 10px;
+  color: #4a5568;
 }
 
 .content-card .row + .row {
-        margin-top: 10px;
+  margin-top: 10px;
 }
 
 .alert {
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(17, 24, 39, 0.1);
-        margin-bottom: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.1);
+  margin-bottom: 0;
 }
 
 .btn {
-        border-radius: 8px;
-        padding: 10px 16px;
-        font-weight: 600;
-        letter-spacing: 0.3px;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 .btn-primary {
-        background-color: #4e008e;
-        border-color: #4e008e;
+  background-color: #4e008e;
+  border-color: #4e008e;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-        background-color: #3b006c;
-        border-color: #3b006c;
+  background-color: #3b006c;
+  border-color: #3b006c;
 }
 
 .btn-info {
-        background-color: #00b2d6;
-        border-color: #00b2d6;
+  background-color: #00b2d6;
+  border-color: #00b2d6;
 }
 
 .btn-info:hover,
 .btn-info:focus {
-        background-color: #0092b1;
-        border-color: #0092b1;
+  background-color: #0092b1;
+  border-color: #0092b1;
 }
 
 .btn-success {
-        background-color: #0a9b6a;
-        border-color: #0a9b6a;
+  background-color: #0a9b6a;
+  border-color: #0a9b6a;
 }
 
 .btn-success:hover,
 .btn-success:focus {
-        background-color: #0a7e57;
-        border-color: #0a7e57;
+  background-color: #0a7e57;
+  border-color: #0a7e57;
 }
 
 .form-control {
-        border-radius: 6px;
-        border-color: #dfe3eb;
-        box-shadow: none;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 6px;
+  border-color: #dfe3eb;
+  box-shadow: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-control:focus {
-        border-color: #4e008e;
-        box-shadow: 0 0 0 2px rgba(78, 0, 142, 0.2);
+  border-color: #4e008e;
+  box-shadow: 0 0 0 2px rgba(78, 0, 142, 0.2);
 }
 
 .text-info {
-        color: #3c4f6d;
+  color: #3c4f6d;
 }
 
 .conversion-hidden {
-        display: none;
+  display: none;
 }
 
 .conversion-spinner {
-        margin-right: 6px;
-        animation: spin 1s linear infinite;
+  margin-right: 6px;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 #conversion-details {
-        background: #0d1826;
-        color: #e9edf5;
-        border-radius: 8px;
-        border: 1px solid #243447;
-        padding: 12px;
-        white-space: pre-wrap;
-        word-break: break-word;
-        margin-top: 12px;
+  background: #0d1826;
+  color: #e9edf5;
+  border-radius: 8px;
+  border: 1px solid #243447;
+  padding: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-top: 12px;
 }
 
 #conversion-result {
-        margin-top: 10px;
+  margin-top: 10px;
 }
 
 #conversion-details {
-        display:none;
+  display: none;
 }
-
