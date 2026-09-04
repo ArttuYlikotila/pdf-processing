@@ -10,7 +10,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo $lang ?>">
     <head>
         <meta charset="utf-8">
         <title><?php echo htmlspecialchars($messages['htmlTitle'], ENT_QUOTES, 'UTF-8') ?></title>
