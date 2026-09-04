@@ -18,21 +18,26 @@
     <div class="container content-card">
         <div class="row">
             <div class="col-sm">
-                <p>	<?php echo $messages['introduction'] ?> </p>
+                <p><?php echo $messages['introduction'] ?></p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-3">
-                <p>	<?php echo htmlspecialchars($messages['selectFile'], ENT_QUOTES, 'UTF-8') ?> </p>
+                <p><?php echo htmlspecialchars($messages['selectFile'], ENT_QUOTES, 'UTF-8') ?></p>
             </div>
             <div class="col-sm-4">
-                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="file" name="fileToUpload" id="fileToUpload" />
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <input type="submit" class="btn btn-primary" value="<?php echo htmlspecialchars($messages['uploadFile'], ENT_QUOTES, 'UTF-8') ?>" name="submit">
+                <input
+                    type="submit"
+                    class="btn btn-primary"
+                    value="<?php echo htmlspecialchars($messages['uploadFile'], ENT_QUOTES, 'UTF-8') ?>"
+                    name="submit"
+                />
             </div>
         </div>
     </div>
