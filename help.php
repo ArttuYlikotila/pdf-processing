@@ -21,13 +21,13 @@ include_once("elements/header.php");
 <div class="container content-card">
     <div class="row">
         <div class="col-sm-9">
-
             <h3><?php echo($messages['helpHeadline']) ?></h3>
             <p><?php echo($messages['helpFileBrowse']) ?></p>
-            <div class="alert alert-warning"><?php echo($messages['helpIntroAlert']) ?></div>
+            <div class="alert alert-warning">
+                <?php echo($messages['helpIntroAlert']) ?>
+            </div>
         </div>
         <div class="col-sm-9">
-
             <p><?php echo($messages['helpMetadataIntro']) ?></p>
             <p><?php echo($messages['helpMetadataPurpose']) ?></p>
             <p><?php echo($messages['helpMetadataProcess']) ?></p>
@@ -35,7 +35,6 @@ include_once("elements/header.php");
             <p><?php echo($messages['helpRememberToDelete']) ?></p>
         </div>
     </div>
-
 </div>
 <?php
 include_once("elements/footer.php");
