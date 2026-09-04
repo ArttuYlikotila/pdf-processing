@@ -4,36 +4,36 @@
  *
  * This software is licensed under GNU General Public License version 3 or later.
  *
- * For the full copyright and license information, 
- * please see https://www.gnu.org/licenses/gpl-3.0.html or read 
+ * For the full copyright and license information,
+ * please see https://www.gnu.org/licenses/gpl-3.0.html or read
  * the LICENSE.txt file that was distributed with this source code.
  */
 ?>
-<?php 
+<?php
 /**
  * Form for the file upload.
  */
 ?>
 <form method="post" action="index.php" enctype="multipart/form-data">
     <div class="container content-card">
-    	<div class="row">
-			<div class="col-sm">
-    			<p>	<?php echo $messages['introduction'] ?> </p>
-    		</div>
-		</div>
-		
-		<div class="row">
-    		<div class="col-sm-3">
-    			<p>	<?php echo htmlspecialchars($messages['selectFile'], ENT_QUOTES, 'UTF-8') ?> </p>
-    		</div>
-    		<div class="col-sm-4">
+        <div class="row">
+            <div class="col-sm">
+                <p>	<?php echo $messages['introduction'] ?> </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <p>	<?php echo htmlspecialchars($messages['selectFile'], ENT_QUOTES, 'UTF-8') ?> </p>
+            </div>
+            <div class="col-sm-4">
                 <input type="file" name="fileToUpload" id="fileToUpload">
-        	</div>
+            </div>
         </div>
         <div class="row">
-        	<div class="col-sm-4">
-        		<input type="submit" class="btn btn-primary" value="<?php echo htmlspecialchars($messages['uploadFile'], ENT_QUOTES, 'UTF-8') ?>" name="submit">
-        	</div>
+            <div class="col-sm-4">
+                <input type="submit" class="btn btn-primary" value="<?php echo htmlspecialchars($messages['uploadFile'], ENT_QUOTES, 'UTF-8') ?>" name="submit">
+            </div>
         </div>
     </div>
 </form>
