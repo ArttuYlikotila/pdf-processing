@@ -15,15 +15,17 @@
  */
 ?>
 <div class="row top-buffer">
-    <div class="col-sm text-info"><?php echo htmlspecialchars($messages['pdfaMetadataMessage'], ENT_QUOTES, 'UTF-8') ?></div>
+    <div class="col-sm text-info">
+        <?php echo htmlspecialchars($messages['pdfaMetadataMessage'], ENT_QUOTES, 'UTF-8') ?>
+    </div>
 </div>
 <?php foreach ($configs['metadataField'] as $field) { ?>
-    <div class="row top-buffer">
-        <div class="col-sm-3">
-            <p><?php echo htmlspecialchars($messages[$field . 'Label'], ENT_QUOTES, 'UTF-8') ?></p>
-        </div>
-        <div class="col-sm-5">
-            <input name="<?php echo htmlspecialchars($field, ENT_QUOTES, 'UTF-8') ?>" type="text" class="form-control" />
-        </div>
+<div class="row top-buffer">
+    <div class="col-sm-3">
+        <p><?php echo htmlspecialchars($messages[$field . 'Label'], ENT_QUOTES, 'UTF-8') ?></p>
     </div>
+    <div class="col-sm-5">
+        <input name="<?php echo htmlspecialchars($field, ENT_QUOTES, 'UTF-8') ?>" type="text" class="form-control" />
+    </div>
+</div>
 <?php } ?>
