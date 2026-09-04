@@ -40,7 +40,7 @@
                     <div class="col-sm-7">
                         <h3>
                             <a href="<?php echo htmlspecialchars($messages['logo_link'], ENT_QUOTES, 'UTF-8') ?>" target="_blank">
-                                <img src="<?php echo htmlspecialchars($messages['logo_image'], ENT_QUOTES, 'UTF-8') ?>" class="logo"/>
+                                <img src="<?php echo htmlspecialchars($messages['logo_image'], ENT_QUOTES, 'UTF-8') ?>" class="logo" alt="<?php echo $messages['logo_alt'] ?>" />
                             </a>
                             <?php echo htmlspecialchars($messages['headline'], ENT_QUOTES, 'UTF-8') ?>
                         </h3>
