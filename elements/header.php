@@ -31,7 +31,6 @@
 
         <!-- Favicon -->
         <link rel="icon" type="image/png" sizes="any" href="images/favicon.ico">
-
     </head>
     <body>
         <div class="page-header">
@@ -40,14 +39,17 @@
                     <div class="col-sm-7">
                         <h3>
                             <a href="<?php echo htmlspecialchars($messages['logo_link'], ENT_QUOTES, 'UTF-8') ?>" target="_blank">
-                                <img src="<?php echo htmlspecialchars($messages['logo_image'], ENT_QUOTES, 'UTF-8') ?>" class="logo" alt="<?php echo $messages['logo_alt'] ?>" />
+                                <img
+                                    src="<?php echo htmlspecialchars($messages['logo_image'], ENT_QUOTES, 'UTF-8') ?>"
+                                    class="logo"
+                                    alt="<?php echo $messages['logo_alt'] ?>"
+                                />
                             </a>
                             <?php echo htmlspecialchars($messages['headline'], ENT_QUOTES, 'UTF-8') ?>
                         </h3>
                     </div>
                     <div class="col-sm-3">
                         <ul class="nav navbar-nav ">
-
                             <?php foreach ($messages['navButton'] as $nav) {
                                 $navigator = explode(",", $nav);
                             ?>
@@ -60,8 +62,7 @@
                             <?php } ?>
 
                             <?php $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2); ?>
-                            <li class="text-center active">
-                            </li>
+                            <li class="text-center active"></li>
                         </ul>
                     </div>
                     <div class="col-sm-2 lang-selector">
@@ -76,7 +77,6 @@
                             Suomi
                             <?php if ($lang === 'fi') echo '</strong>' ?>
                         </a>
-
                     </div>
                 </div>
             </div>
