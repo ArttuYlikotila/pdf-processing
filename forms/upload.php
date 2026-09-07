@@ -23,12 +23,10 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-3">
-                <p><?php echo htmlspecialchars($messages['selectFile'], ENT_QUOTES, 'UTF-8') ?></p>
-            </div>
-            <div class="col-sm-4">
-                <input type="file" name="fileToUpload" id="fileToUpload" />
-            </div>
+            <label class="col-sm-3" for="fileToUpload">
+                <?php echo htmlspecialchars($messages['selectFile'], ENT_QUOTES, 'UTF-8') ?>
+            </label>
+            <input type="file" name="fileToUpload" id="fileToUpload" class="col-sm-4" />
         </div>
         <div class="row">
             <div class="col-sm-4">
