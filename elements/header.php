@@ -81,4 +81,4 @@
                 </div>
             </div>
         </div>
-        <div class="top-buffer bottom-buffer">
+        <main class="top-buffer bottom-buffer">
