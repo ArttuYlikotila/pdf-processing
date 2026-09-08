@@ -11,12 +11,10 @@
 ?>
         </main>
         <footer class="footer">
-            <div class="container">
-                <div class="text-center">
-                    <a href="<?php echo htmlspecialchars($messages['contact_link'], ENT_QUOTES, 'UTF-8') ?>" target="_blank">
-                        <?php echo htmlspecialchars($messages['contact'], ENT_QUOTES, 'UTF-8') ?>
-                    </a>
-                </div>
+            <div class="container text-center">
+                <a href="<?php echo htmlspecialchars($messages['contact_link'], ENT_QUOTES, 'UTF-8') ?>" target="_blank">
+                    <?php echo $messages['contact'] ?>
+                </a>
             </div>
         </footer>
         <script src="js/conversion.js"></script>
