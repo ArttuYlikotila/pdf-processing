@@ -28,14 +28,14 @@
     statusBox.className = alertClasses.join(' ');
     statusText.textContent = text;
 
-    const iconClasses = ['glyphicon'];
+    const iconClasses = ['bi'];
 
     if (type === 'success') {
-      iconClasses.push('glyphicon-ok');
+      iconClasses.push('bi-check');
     } else if (type === 'danger') {
-      iconClasses.push('glyphicon-remove');
+      iconClasses.push('bi-x');
     } else {
-      iconClasses.push('glyphicon-refresh');
+      iconClasses.push('bi-arrow-repeat');
     }
 
     if (spinning) {
@@ -57,8 +57,10 @@
     const downloadName = data.displayName || '';
     resultBox.innerHTML = `
       <div class="alert alert-success">
-        <span class="glyphicon glyphicon-download"></span>
-        <a href="${data.downloadUrl}" class="btn btn-info btn-sm top-buffer" data-download-url="${data.downloadUrl}" data-download-name="${downloadName}">${resultBox.dataset.downloadLabel}</a>
+        <a href="${data.downloadUrl}" class="btn btn-info btn-sm" data-download-url="${data.downloadUrl}" data-download-name="${downloadName}">
+          <i class="bi bi-arrow-down-circle"></i>
+          ${resultBox.dataset.downloadLabel}
+        </a>
         <span class="text-info">${resultBox.dataset.readyLabel}${displayName}</span>
       </div>
     `;

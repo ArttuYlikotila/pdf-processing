@@ -81,7 +81,7 @@ if ($simplified_conversion) {
                     data-success="<?php echo htmlspecialchars($messages['conversionSuccess'], ENT_QUOTES, 'UTF-8') ?>"
                     data-failed="<?php echo htmlspecialchars($messages['conversionFailed'], ENT_QUOTES, 'UTF-8') ?>"
                 >
-                    <span id="conversion-status-icon" class="glyphicon glyphicon-refresh conversion-spinner" aria-hidden="true"></span>
+                    <i id="conversion-status-icon" class="bi bi-arrow-repeat conversion-spinner" aria-hidden="true"></i>
                     <span id="conversion-status-text"><?php echo htmlspecialchars($messages['conversionIdle'], ENT_QUOTES, 'UTF-8') ?></span>
                 </div>
                 <div
