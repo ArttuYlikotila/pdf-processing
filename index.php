@@ -27,7 +27,6 @@
     // If there is no target file, show upload form
     if (empty($_SESSION['uploadFile']) || !file_exists($_SESSION['uploadFile'])) {
         include_once("forms/upload.php");
-
     } else {
         include_once("forms/processing.php");
     }
