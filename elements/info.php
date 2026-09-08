@@ -24,23 +24,23 @@
                 include("elements/download.php");
             }
             } else { ?>
+            <!-- TODO: this should not be a link or a button, instead should be message container of some kind-->
             <a href="#" class="btn btn-danger btn-lg">
-                <span class="glyphicon glyphicon-remove-sign"></span>
-                <?php echo htmlspecialchars($messages['failMessage'], ENT_QUOTES, 'UTF-8') ?>
+                <i class="bi bi-x-circle-fill"></i>
+                <?php echo $messages['failMessage'] ?>
             </a>
         <?php } ?>
         </div>
     </div>
+
     <div class="row top-buffer">
-        <div class="col-sm-6">
-            <p><strong><?php echo($messages['deleteMessage']) ?></strong></p>
-        </div>
+        <p class="col-sm-6 fw-bold"><?php echo($messages['deleteMessage']) ?></p>
         <div class="col-sm-3">
             <input
                 type="submit"
                 class="btn btn-primary"
                 name="delete_file"
-                value="<?php echo htmlspecialchars($messages['deleteButton'], ENT_QUOTES, 'UTF-8') ?>"
+                value="<?php echo $messages['deleteButton'] ?>"
             />
         </div>
     </div>
