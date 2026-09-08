@@ -15,13 +15,11 @@
  */
 ?>
 <div class="row top-buffer">
-    <div class="col-sm-6">
-        <p><?php echo htmlspecialchars($messages['downloadLabel'], ENT_QUOTES, 'UTF-8') ?></p>
-    </div>
+    <p class="col-sm-6"><?php echo $messages['downloadLabel'] ?></p>
     <div class="col-sm-3">
         <a href="stream.php" class="btn btn-info">
-            <span class="glyphicon glyphicon-download"></span>
-            <?php echo htmlspecialchars($messages['downloadButton'], ENT_QUOTES, 'UTF-8') ?>
+            <i class="bi bi-arrow-down-circle"></i>
+            <?php echo $messages['downloadButton'] ?>
         </a>
     </div>
 </div>
