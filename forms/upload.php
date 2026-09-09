@@ -16,27 +16,20 @@
 ?>
 <form method="post" action="index.php" enctype="multipart/form-data">
     <div class="container content-card">
-        <div class="row">
-            <div class="col-sm">
-                <p><?php echo $messages['introduction'] ?></p>
-            </div>
-        </div>
+        <p class="mb-3"><?php echo $messages['introduction'] ?></p>
 
         <div class="row">
             <label class="col-sm-3" for="fileToUpload">
-                <?php echo htmlspecialchars($messages['selectFile'], ENT_QUOTES, 'UTF-8') ?>
+                <?php echo $messages['selectFile'] ?>
             </label>
-            <input type="file" name="fileToUpload" id="fileToUpload" class="col-sm-4" />
+            <input type="file" name="fileToUpload" id="fileToUpload" class="col-sm-9" />
         </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <input
-                    type="submit"
-                    class="btn btn-primary"
-                    value="<?php echo htmlspecialchars($messages['uploadFile'], ENT_QUOTES, 'UTF-8') ?>"
-                    name="submit"
-                />
-            </div>
-        </div>
+
+        <input
+            type="submit"
+            class="btn btn-primary mt-2"
+            value="<?php echo htmlspecialchars($messages['uploadFile'], ENT_QUOTES, 'UTF-8') ?>"
+            name="submit"
+        />
     </div>
 </form>
