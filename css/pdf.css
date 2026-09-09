@@ -204,8 +204,10 @@ label {
   box-shadow: 0 0 0 2px rgba(78, 0, 142, 0.2);
 }
 
-.text-info {
-  color: #3c4f6d;
+.info-text {
+  background-color: #fff8dc;
+  border-left: 6px solid #dcc59c;
+  padding: 0.5rem;
 }
 
 .conversion-hidden {
