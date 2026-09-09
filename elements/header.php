@@ -14,21 +14,17 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php echo htmlspecialchars($messages['htmlTitle'], ENT_QUOTES, 'UTF-8') ?></title>
+
+        <title><?php echo $messages['htmlTitle'] ?></title>
 
         <base href="<?php echo htmlspecialchars($configs['baseUrl'], ENT_QUOTES, 'UTF-8') ?>">
 
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
         <!-- additional css -->
         <link rel="stylesheet" href="css/pdf.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <!-- Favicon -->
         <link rel="icon" type="image/png" sizes="any" href="images/favicon.ico">
