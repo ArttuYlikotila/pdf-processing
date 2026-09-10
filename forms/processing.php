@@ -39,12 +39,9 @@ if ($simplified_conversion) {
                 <?php createSelectBox('pdfa_level', $messages['pdfaLevel']); ?>
             </div>
             <div class="col-sm-3">
-                <input
-                    type="submit"
-                    class="btn btn-success"
-                    name="pdfa_validate"
-                    value="<?php echo $messages['validateButton'] ?>"
-                />
+                <button type="submit" class="btn btn-success" name="pdfa_validate">
+                    <?php echo $messages['validateButton'] ?>
+                </button>
             </div>
         </div>
         <?php endif; ?>
@@ -56,13 +53,9 @@ if ($simplified_conversion) {
                 <?php echo($messages['pdfaConvertMessage']) ?>
             </div>
             <div class="col">
-                <input
-                    type="submit"
-                    class="btn btn-info"
-                    id="pdfa-convert-button"
-                    name="pdfa_convert"
-                    value="<?php echo $messages['convertButton'] ?>"
-                />
+                <button type="submit" class="btn btn-info" id="pdfa-convert-button" name="pdfa_convert">
+                    <?php echo $messages['convertButton'] ?>
+                </button>
             </div>
             <div class="col-sm-1">
                 <?php createSelectBox('pdfa_convlevel', $messages['pdfaLevel'], true); ?>
@@ -108,12 +101,9 @@ if ($simplified_conversion) {
                 <p class="fw-bold"><?php echo($messages['deleteMessage']) ?></p>
             </div>
             <div class="col">
-                <input
-                    type="submit"
-                    class="btn btn-primary"
-                    name="delete_file"
-                    value="<?php echo $messages['deleteButton'] ?>"
-                />
+                <button type="submit" class="btn btn-primary" name="delete_file">
+                    <?php echo $messages['deleteButton'] ?>
+                </button>
             </div>
         </div>
     </div>

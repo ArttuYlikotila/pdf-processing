@@ -25,11 +25,8 @@
             <input type="file" name="fileToUpload" id="fileToUpload" class="col-sm-9" />
         </div>
 
-        <input
-            type="submit"
-            class="btn btn-primary mt-2"
-            value="<?php echo htmlspecialchars($messages['uploadFile'], ENT_QUOTES, 'UTF-8') ?>"
-            name="submit"
-        />
+        <button type="submit" class="btn btn-primary mt-2" name="submit">
+            <?php echo $messages['uploadFile'] ?>
+        </button>
     </div>
 </form>
