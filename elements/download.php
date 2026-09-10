@@ -17,7 +17,7 @@
 <div class="row top-buffer">
     <p class="col-sm-6"><?php echo $messages['downloadLabel'] ?></p>
     <div class="col-sm-3">
-        <a href="stream.php" class="btn btn-info">
+        <a href="stream.php" class="btn btn-info" role="button">
             <i class="bi bi-arrow-down-circle"></i>
             <?php echo $messages['downloadButton'] ?>
         </a>
