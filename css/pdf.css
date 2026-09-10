@@ -27,19 +27,23 @@ body {
 }
 
 .page-header {
-  width: 100%;
-  min-height: 100px;
+  /* width: 100%; */
+  /* min-height: 100px; */
   background-color: #4e008e;
   border-bottom: none;
-  margin: 0 0 20px;
-  padding: 16px 0;
+  /* margin: 0 0 20px; */
+  /* padding: 16px 0; */
   box-shadow: 0 6px 18px rgba(78, 0, 142, 0.2);
+}
+
+.page-header a.logo-link {
+  padding-bottom: 0.75rem;
 }
 
 .logo {
   height: 54px;
   width: auto;
-  padding: 0 12px 0 4px;
+  /* padding: 0 12px 0 4px; */
   object-fit: contain;
 }
 
@@ -80,24 +84,24 @@ body {
   color: #ffffff;
   font-weight: 600;
   letter-spacing: 0.5px;
-  margin-top: 2.25rem;
+  margin-bottom: 0;
   font-size: 18px;
 }
 
-.page-header li {
-  width: 90px;
-  margin-top: 16px;
+.nav-links {
+  display: flex;
+  flex-direction: row;
 }
 
-.page-header .nav > li > a {
+.page-header .nav-links a {
   color: #efe6ff;
   border-radius: 20px;
   padding: 9px 12px;
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.page-header .nav > li > a:hover,
-.page-header .nav > li > a:focus {
+.page-header .nav-links a:hover,
+.page-header .nav-links a:focus {
   background-color: rgba(255, 255, 255, 0.18);
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(78, 0, 142, 0.16);
@@ -114,7 +118,6 @@ h5 {
 }
 
 .lang-selector {
-  padding-top: 46px;
   color: #efe6ff;
   text-align: right;
   white-space: nowrap;
@@ -123,6 +126,10 @@ h5 {
 .lang-selector a {
   color: #efe6ff;
   font-weight: 600;
+}
+
+.lang-selector a.chosen {
+  font-weight: 900;
 }
 
 .content-card {
