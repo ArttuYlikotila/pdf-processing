@@ -62,12 +62,6 @@ if ($simplified_conversion) {
                     <?php echo $messages['convertButton'] ?>
                 </button>
             </div>
-            <div class="col-sm-1">
-                <?php createSelectBox('pdfa_convlevel', $messages['pdfaLevel'], true); ?>
-            </div>
-            <div class="col-sm-2">
-                <?php createSelectBox('pdfa_mode', $messages['pdfaModus'], true); ?>
-            </div>
         </div>
 
         <!-- TODO: This is hidden by default? Takes space from DOM because of "top-buffer", should that be changed? -->
