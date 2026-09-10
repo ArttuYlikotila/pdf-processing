@@ -6,13 +6,15 @@ const statusIcon = document.getElementById('conversion-status-icon');
 const resultBox = document.getElementById('conversion-result');
 const detailsBox = document.getElementById('conversion-details');
 
-function showBox(element) {
-  element.classList.remove('conversion-hidden');
-};
-
-function hideBox(element) {
-  element.classList.add('conversion-hidden');
-};
+/**
+ * Add or remove "conversion-hidden" CSS class to/from HTML element
+ *
+ * @param {HTMLElement} element
+ * @param {boolean} hidden Boolean indicating if the hidden class should be added or removed
+ */
+function toggleElementHidden(element, hidden) {
+  element.classList.toggle('conversion-hidden', hidden);
+}
 
 function resetIcon(classes) {
   statusIcon.className = classes.join(' ');
@@ -38,13 +40,13 @@ function setStatus(type, text, spinning = false) {
   }
 
   resetIcon(iconClasses);
-  showBox(statusBox);
+  toggleElementHidden(statusBox, false);
 };
 
 function renderDownload(data) {
   if (!data || data.status !== 'success' || !data.downloadUrl) {
     resultBox.innerHTML = '';
-    hideBox(resultBox);
+    toggleElementHidden(resultBox, true);
     return;
   }
 
@@ -59,7 +61,8 @@ function renderDownload(data) {
       <span class="text-info">${resultBox.dataset.readyLabel}${displayName}</span>
     </div>
   `;
-  showBox(resultBox);
+
+  toggleElementHidden(resultBox, false);
 };
 
 function downloadFile(downloadUrl, downloadName) {
@@ -108,10 +111,10 @@ function downloadFile(downloadUrl, downloadName) {
 function updateDetails(text) {
   if (text) {
     detailsBox.textContent = text;
-    showBox(detailsBox);
+    toggleElementHidden(detailsBox, false);
   } else {
     detailsBox.textContent = '';
-    hideBox(detailsBox);
+    toggleElementHidden(detailsBox, true);
   }
 };
 
@@ -172,8 +175,8 @@ convertButton?.addEventListener('click', (event) => {
 
   convertButton.disabled = true;
   setStatus('info', inProgressText, true);
-  hideBox(resultBox);
-  hideBox(detailsBox);
+  toggleElementHidden(resultBox, true);
+  toggleElementHidden(detailsBox, true);
 
   pollStatus(successText, failedText);
 
