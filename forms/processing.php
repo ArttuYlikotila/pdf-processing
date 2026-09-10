@@ -39,7 +39,12 @@ if ($simplified_conversion) {
                 <?php createSelectBox('pdfa_level', $messages['pdfaLevel']); ?>
             </div>
             <div class="col-sm-3">
-                <button type="submit" class="btn btn-success" name="pdfa_validate">
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                    name="pdfa_validate"
+                    value="<?php echo $messages['validateButton'] ?>"
+                >
                     <?php echo $messages['validateButton'] ?>
                 </button>
             </div>
@@ -101,7 +106,7 @@ if ($simplified_conversion) {
                 <p class="fw-bold"><?php echo($messages['deleteMessage']) ?></p>
             </div>
             <div class="col">
-                <button type="submit" class="btn btn-primary" name="delete_file">
+                <button type="submit" class="btn btn-primary" name="delete_file" value="<?php echo $messages['deleteButton'] ?>">
                     <?php echo $messages['deleteButton'] ?>
                 </button>
             </div>
