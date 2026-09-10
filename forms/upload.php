@@ -18,11 +18,11 @@
     <div class="container content-card">
         <p class="mb-3"><?php echo $messages['introduction'] ?></p>
 
-        <div class="row">
-            <label class="col-sm-3" for="fileToUpload">
+        <div class="mb-1">
+            <label class="form-label" for="fileToUpload">
                 <?php echo $messages['selectFile'] ?>
             </label>
-            <input type="file" name="fileToUpload" id="fileToUpload" class="col-sm-9" />
+            <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" />
         </div>
 
         <button type="submit" class="btn btn-primary mt-2" name="submit">
