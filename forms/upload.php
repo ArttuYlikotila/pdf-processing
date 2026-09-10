@@ -22,7 +22,7 @@
             <label class="form-label" for="fileToUpload">
                 <?php echo $messages['selectFile'] ?>
             </label>
-            <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" />
+            <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" accept=".pdf" />
         </div>
 
         <button type="submit" class="btn btn-primary mt-2" name="submit">
