@@ -64,35 +64,30 @@ if ($simplified_conversion) {
             </div>
         </div>
 
-        <!-- TODO: This is hidden by default? Takes space from DOM because of "top-buffer", should that be changed? -->
-        <!-- TODO: aria role should be handled differently, alert for failure and status for others -->
-        <!-- TODO: visuals for the status message could be changed? -->
         <!-- TODO: add Bootstrap spinner, current spinner broke with the Bootstrap update -->
-        <div class="row top-buffer">
-            <div class="col-sm-12">
-                <div
-                    id="conversion-status"
-                    class="alert alert-info conversion-hidden"
-                    role="alert"
-                    data-in-progress="<?php echo $messages['conversionInProgress'] ?>"
-                    data-success="<?php echo $messages['conversionSuccess'] ?>"
-                    data-failed="<?php echo $messages['conversionFailed'] ?>"
-                >
-                    <i id="conversion-status-icon" class="bi bi-arrow-repeat conversion-spinner" aria-hidden="true"></i>
-                    <span id="conversion-status-text">
-                        <?php echo $messages['conversionIdle'] ?>
-                    </span>
-                </div>
-
-                <div
-                    id="conversion-result"
-                    class="conversion-hidden"
-                    data-download-label="<?php echo $messages['downloadButton'] ?>"
-                    data-ready-label="<?php echo $messages['downloadLabel'] ?>"
-                >
-                </div>
-                <pre id="conversion-details" class="conversion-hidden"></pre>
+        <div class="conversion-info row mt-3">
+            <div
+                id="conversion-status"
+                class="message-container message-success conversion-hidden"
+                role="alert"
+                data-in-progress="<?php echo $messages['conversionInProgress'] ?>"
+                data-success="<?php echo $messages['conversionSuccess'] ?>"
+                data-failed="<?php echo $messages['conversionFailed'] ?>"
+            >
+                <i id="conversion-status-icon" class="bi bi-arrow-repeat conversion-spinner" aria-hidden="true"></i>
+                <span id="conversion-status-text">
+                    <?php echo $messages['conversionIdle'] ?>
+                </span>
             </div>
+
+            <div
+                id="conversion-result"
+                class="message-container message-success conversion-hidden"
+                data-download-label="<?php echo $messages['downloadButton'] ?>"
+                data-ready-label="<?php echo $messages['downloadLabel'] ?>"
+            >
+            </div>
+            <pre id="conversion-details" class="conversion-hidden"></pre>
         </div>
 
         <div class="row top-buffer">
