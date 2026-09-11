@@ -67,19 +67,23 @@ function renderDownload(data) {
     return;
   }
 
-  const displayName = data.displayName ? ` (${data.displayName})` : '';
+  const displayName = data.displayName ? `(${data.displayName})` : '';
   const downloadName = data.displayName || '';
-  resultBox.innerHTML = `
-    <div class="alert alert-success">
-      <a href="${data.downloadUrl}" class="btn btn-info btn-sm" data-download-url="${data.downloadUrl}" data-download-name="${downloadName}">
-        <i class="bi bi-arrow-down-circle"></i>
-        ${resultBox.dataset.downloadLabel}
-      </a>
-      <span class="text-info">${resultBox.dataset.readyLabel}${displayName}</span>
-    </div>
-  `;
 
-  toggleElementHidden(resultBox, false);
+  const icon = document.createElement("i");
+  icon.classList.add("bi", "bi-box-arrow-down");
+  icon.setAttribute("aria-hidden", true);
+
+  const link = document.createElement("a");
+  link.href = data.downloadUrl;
+  link.classList.add("alert-link");
+  link.setAttribute("data-download-url", data.downloadUrl);
+  link.setAttribute("data-download-name", downloadName);
+  link.textContent = `${resultContainer.dataset.readyLabel} ${displayName}`;
+
+  resultContainer.append(icon, link);
+
+  toggleElementHidden(resultContainer, false);
 };
 
 /**
