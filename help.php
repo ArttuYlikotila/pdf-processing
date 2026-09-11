@@ -22,7 +22,7 @@ include_once("elements/header.php");
     <h3><?php echo($messages['helpHeadline']) ?></h3>
     <p><?php echo($messages['helpFileBrowse']) ?></p>
 
-    <div class="alert alert-warning mb-3">
+    <div class="info-text mb-3">
         <?php echo($messages['helpIntroAlert']) ?>
     </div>
 
