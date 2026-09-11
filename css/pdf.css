@@ -214,7 +214,32 @@ label {
 .info-text {
   background-color: #fff8dc;
   border-left: 6px solid #dcc59c;
+  padding: 1rem 0.5rem;
+}
+
+.message-container {
+  background-color: #d1e7dd;
+  border-left: 6px solid #5a7f6e;
+  padding: 1.25rem 0.5rem;
+}
+
+.message-success {
+  background-color: #d1e7dd;
+  border-left: 6px solid #5a7f6e;
+}
+
+.message-danger {
+  background-color: #75141d;
+  border-left: 6px solid #c73442;
+  color: #ffb4bb;
+}
+
+.conversion-info i {
   padding: 0.5rem;
+}
+
+.conversion-info a:hover {
+  color: #1e5f49;
 }
 
 .conversion-hidden {
