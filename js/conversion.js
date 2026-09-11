@@ -3,8 +3,8 @@ const convertButton = document.getElementById('pdfa-convert-button');
 const statusBox = document.getElementById('conversion-status');
 const statusText = document.getElementById('conversion-status-text');
 const statusIcon = document.getElementById('conversion-status-icon');
-const resultBox = document.getElementById('conversion-result');
-const detailsBox = document.getElementById('conversion-details');
+const resultContainer = document.getElementById('conversion-result');
+const conversionDetails = document.getElementById('conversion-details');
 
 /**
  * Add or remove "conversion-hidden" CSS class to/from HTML element
@@ -16,10 +16,22 @@ function toggleElementHidden(element, hidden) {
   element.classList.toggle('conversion-hidden', hidden);
 }
 
+/**
+ * Replace current class names of status icon with new class names
+ *
+ * @param {Array} classes An array of new class names
+ */
 function resetIcon(classes) {
   statusIcon.className = classes.join(' ');
 };
 
+/**
+ * Set class names and text content in the #conversion-status container
+ *
+ * @param {string} type Status type
+ * @param {string} text Status text
+ * @param {boolean} spinning Boolean indicating if there should be a spinner shown
+ */
 function setStatus(type, text, spinning = false) {
   const alertClasses = ['alert', `alert-${type}`];
   statusBox.className = alertClasses.join(' ');
@@ -43,6 +55,11 @@ function setStatus(type, text, spinning = false) {
   toggleElementHidden(statusBox, false);
 };
 
+/**
+ * Render contents to #conversion-result container
+ *
+ * @param {Object} data
+ */
 function renderDownload(data) {
   if (!data || data.status !== 'success' || !data.downloadUrl) {
     resultBox.innerHTML = '';
@@ -65,6 +82,12 @@ function renderDownload(data) {
   toggleElementHidden(resultBox, false);
 };
 
+/**
+ * Download the converted file
+ *
+ * @param {string} downloadUrl URL for the download
+ * @param {string} downloadName Name of the file to download
+ */
 function downloadFile(downloadUrl, downloadName) {
   if (!downloadUrl) {
     return;
@@ -108,18 +131,27 @@ function downloadFile(downloadUrl, downloadName) {
     });
 };
 
-function updateDetails(text) {
-  if (text) {
-    detailsBox.textContent = text;
-    toggleElementHidden(detailsBox, false);
+/**
+ * Update contents of #conversion-details element
+ *
+ * @param {string} summary Summary of conversion process
+ */
+function updateDetails(summary) {
+  if (summary) {
+    conversionDetails.textContent = summary;
+    // TODO: this does not make the element visible, since it has display: none set in CSS file, implementation should be changed if element should be made visible
+    toggleElementHidden(conversionDetails, false);
   } else {
-    detailsBox.textContent = '';
-    toggleElementHidden(detailsBox, true);
+    conversionDetails.textContent = '';
+    toggleElementHidden(conversionDetails, true);
   }
 };
 
 let statusPoller = null;
 
+/**
+ * Stop status polling by clearing statusPoller interval
+ */
 function stopPolling() {
   if (statusPoller !== null) {
     clearInterval(statusPoller);
@@ -127,6 +159,12 @@ function stopPolling() {
   }
 };
 
+/**
+ * Start polling the status of conversion process in intervals of 5 seconds
+ *
+ * @param {string} successText Fallback text for success status
+ * @param {string} failedText Fallback text for error status
+ */
 function pollStatus(successText, failedText) {
   if (statusPoller !== null) {
     return;
@@ -151,6 +189,13 @@ function pollStatus(successText, failedText) {
   }, 5000);
 };
 
+/**
+ * Handle finishing the conversion process
+ *
+ * @param {Object} data JSON object containing information about the conversion process
+ * @param {string} successText Fallback text for success status
+ * @param {string} failedText Fallback text for error status
+ */
 function handleFinalStatus(data, successText, failedText) {
   if (data.status === 'success') {
     setStatus('success', data.message || successText, false);
