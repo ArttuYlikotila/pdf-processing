@@ -1,6 +1,6 @@
 const form = document.getElementById('processing-form');
 const convertButton = document.getElementById('pdfa-convert-button');
-const statusBox = document.getElementById('conversion-status');
+const statusContainer = document.getElementById('conversion-status');
 const statusText = document.getElementById('conversion-status-text');
 const statusIcon = document.getElementById('conversion-status-icon');
 const resultContainer = document.getElementById('conversion-result');
@@ -33,8 +33,8 @@ function resetIcon(classes) {
  * @param {boolean} spinning Boolean indicating if there should be a spinner shown
  */
 function setStatus(type, text, spinning = false) {
-  const alertClasses = ['alert', `alert-${type}`];
-  statusBox.className = alertClasses.join(' ');
+  const containerClasses = ['message-container', `message-${type}`];
+  statusContainer.className = containerClasses.join(' ');
   statusText.textContent = text;
 
   const iconClasses = ['bi'];
@@ -42,7 +42,7 @@ function setStatus(type, text, spinning = false) {
   if (type === 'success') {
     iconClasses.push('bi-check');
   } else if (type === 'danger') {
-    iconClasses.push('bi-x');
+    iconClasses.push('bi-exclamation-triangle-fill');
   } else {
     iconClasses.push('bi-arrow-repeat');
   }
@@ -52,7 +52,7 @@ function setStatus(type, text, spinning = false) {
   }
 
   resetIcon(iconClasses);
-  toggleElementHidden(statusBox, false);
+  toggleElementHidden(statusContainer, false);
 };
 
 /**
@@ -62,8 +62,8 @@ function setStatus(type, text, spinning = false) {
  */
 function renderDownload(data) {
   if (!data || data.status !== 'success' || !data.downloadUrl) {
-    resultBox.innerHTML = '';
-    toggleElementHidden(resultBox, true);
+    resultContainer.innerHTML = '';
+    toggleElementHidden(resultContainer, true);
     return;
   }
 
@@ -93,7 +93,7 @@ function downloadFile(downloadUrl, downloadName) {
     return;
   }
 
-  const downloadStatusText = resultBox.dataset.downloadingLabel || 'Downloading…';
+  const downloadStatusText = resultContainer.dataset.downloadingLabel || 'Downloading…';
   setStatus('info', downloadStatusText, true);
 
   fetch(downloadUrl, { credentials: 'same-origin' })
@@ -124,10 +124,10 @@ function downloadFile(downloadUrl, downloadName) {
       tempLink.remove();
       URL.revokeObjectURL(objectUrl);
 
-      setStatus('success', statusBox.dataset.success, false);
+      setStatus('success', statusContainer.dataset.success, false);
     })
     .catch(() => {
-      setStatus('danger', statusBox.dataset.failed, false);
+      setStatus('danger', statusContainer.dataset.failed, false);
     });
 };
 
@@ -211,17 +211,17 @@ function handleFinalStatus(data, successText, failedText) {
 convertButton?.addEventListener('click', (event) => {
   event.preventDefault();
 
-  const inProgressText = statusBox.dataset.inProgress;
-  const successText = statusBox.dataset.success;
-  const failedText = statusBox.dataset.failed;
+  const inProgressText = statusContainer.dataset.inProgress;
+  const successText = statusContainer.dataset.success;
+  const failedText = statusContainer.dataset.failed;
 
   const formData = new FormData(form);
   formData.set('pdfa_convert', '1');
 
   convertButton.disabled = true;
   setStatus('info', inProgressText, true);
-  toggleElementHidden(resultBox, true);
-  toggleElementHidden(detailsBox, true);
+  toggleElementHidden(resultContainer, true);
+  toggleElementHidden(conversionDetails, true);
 
   pollStatus(successText, failedText);
 
