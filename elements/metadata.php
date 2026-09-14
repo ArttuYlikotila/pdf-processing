@@ -26,7 +26,11 @@
         <?php echo $messages[$field . 'Label'] ?>
     </label>
     <div class="col-md-8 col-lg-9 pb-3">
-        <input id="<?php echo $field ?>" name="<?php echo $field ?>" type="text" class="form-control" />
+        <?php if ($field !== 'description'): ?>
+            <input id="<?php echo $field ?>" name="<?php echo $field ?>" type="text" class="form-control" />
+        <?php else: ?>
+            <textarea id="<?php echo $field ?>" name="<?php echo $field ?>" type="text" class="form-control"></textarea>
+        <?php endif; ?>
     </div>
 </div>
 <?php } ?>
