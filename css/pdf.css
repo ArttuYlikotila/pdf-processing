@@ -229,8 +229,6 @@ label {
 }
 
 .message-container {
-  background-color: #d1e7dd;
-  border-left: 6px solid #5a7f6e;
   padding: 1.25rem 0.5rem;
 }
 
@@ -243,6 +241,12 @@ label {
   background-color: #75141d;
   border-left: 6px solid #c73442;
   color: #ffb4bb;
+}
+
+.messsage-info {
+  background-color: #cff4fc;
+  border-left: 6px solid #357e8c;
+  color: #055160;
 }
 
 .conversion-info i {
