@@ -17,7 +17,7 @@
 if (!empty($errorMessage)) {
 ?>
 <div class="container content-card">
-    <div class="message-container messsage-info">
+    <div class="message-container message-info">
         <?php echo htmlspecialchars($errorMessage, ENT_QUOTES, 'UTF-8') ?>
     </div>
 </div>
@@ -28,7 +28,7 @@ if (!empty($errorMessage)) {
 if (!empty($infoMessage)) {
 ?>
 <div class="container content-card">
-    <div class="message-container messsage-info">
+    <div class="message-container message-info">
         <?php echo htmlspecialchars($infoMessage, ENT_QUOTES, 'UTF-8') ?>
     </div>
 </div>
