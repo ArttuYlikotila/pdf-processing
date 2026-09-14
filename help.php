@@ -19,7 +19,7 @@ include_once("elements/header.php");
 
 ?>
 <div class="container content-card">
-    <h3><?php echo($messages['helpHeadline']) ?></h3>
+    <h1><?php echo $messages['headline'] ?></h1>
     <p><?php echo($messages['helpFileBrowse']) ?></p>
 
     <div class="info-text mb-3">

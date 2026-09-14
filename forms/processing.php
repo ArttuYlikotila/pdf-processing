@@ -21,8 +21,9 @@ if ($simplified_conversion) {
 }
 
 ?>
-<form method="post" action="index.php" id="processing-form">
-    <div class="container content-card">
+<div class="container content-card">
+    <h1><?php echo $messages['headline'] ?></h1>
+    <form method="post" action="index.php" id="processing-form">
         <p>
             <?php echo $messages['uploadedFile'] ?>
             <span class="fw-bold">
@@ -80,7 +81,7 @@ if ($simplified_conversion) {
             </div>
         </div>
 
-        <div class="conversion-info row mt-3">
+        <div class="conversion-info mt-3">
             <div
                 id="conversion-status"
                 class="message-container message-success conversion-hidden"
@@ -104,5 +105,5 @@ if ($simplified_conversion) {
             </div>
             <pre id="conversion-details" class="conversion-hidden"></pre>
         </div>
-    </div>
-</form>
+    </form>
+</div>

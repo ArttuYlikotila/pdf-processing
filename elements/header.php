@@ -40,7 +40,6 @@
                             alt="<?php echo $messages['logo_alt'] ?>"
                         />
                     </a>
-                    <h3><?php echo $messages['headline'] ?></h3>
 
                     <div class="nav-links">
                         <?php foreach ($messages['navButton'] as $nav) {

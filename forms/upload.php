@@ -14,8 +14,9 @@
  * Form for the file upload.
  */
 ?>
-<form method="post" action="index.php" enctype="multipart/form-data">
-    <div class="container content-card">
+<div class="container content-card">
+    <h1><?php echo $messages['headline'] ?></h1>
+    <form method="post" action="index.php" enctype="multipart/form-data">
         <p class="mb-3"><?php echo $messages['introduction'] ?></p>
 
         <div class="mb-1">
@@ -28,5 +29,5 @@
         <button type="submit" class="btn btn-tuni mt-2" name="submit">
             <?php echo $messages['uploadFile'] ?>
         </button>
-    </div>
-</form>
+    </form>
+</div>

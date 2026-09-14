@@ -14,7 +14,7 @@
  * Input fields for additional metadata.
  */
 ?>
-<div class="row">
+<div>
     <div class="info-text mb-3">
         <?php echo $messages['pdfaMetadataMessage'] ?>
     </div>
