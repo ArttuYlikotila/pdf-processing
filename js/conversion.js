@@ -88,55 +88,6 @@ function renderDownload(data) {
 };
 
 /**
- * Download the converted file
- *
- * @param {string} downloadUrl URL for the download
- * @param {string} downloadName Name of the file to download
- */
-function downloadFile(downloadUrl, downloadName) {
-  if (!downloadUrl) {
-    return;
-  }
-
-  const downloadStatusText = resultContainer.dataset.downloadingLabel || 'Downloading…';
-  setStatus('info', downloadStatusText, true);
-
-  fetch(downloadUrl, { credentials: 'same-origin' })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Download failed');
-      }
-
-      return response.blob().then((blob) => ({ blob, response }));
-    })
-    .then(({ blob, response }) => {
-      let filename = downloadName;
-      const disposition = response.headers.get('Content-Disposition') || '';
-
-      if (!filename) {
-        const match = disposition.match(/filename\*?=(?:UTF-8''|\"?)([^;\"]+)/i);
-        if (match && match[1]) {
-          filename = decodeURIComponent(match[1].replace(/\"/g, '').trim());
-        }
-      }
-
-      const objectUrl = URL.createObjectURL(blob);
-      const tempLink = document.createElement('a');
-      tempLink.href = objectUrl;
-      tempLink.download = filename || '';
-      document.body.appendChild(tempLink);
-      tempLink.click();
-      tempLink.remove();
-      URL.revokeObjectURL(objectUrl);
-
-      setStatus('success', statusContainer.dataset.success, false);
-    })
-    .catch(() => {
-      setStatus('danger', statusContainer.dataset.failed, false);
-    });
-};
-
-/**
  * Update contents of #conversion-details element
  *
  * @param {string} summary Summary of conversion process
