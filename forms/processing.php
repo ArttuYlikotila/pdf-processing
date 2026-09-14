@@ -58,7 +58,13 @@ if ($simplified_conversion) {
                 <?php echo($messages['pdfaConvertMessage']) ?>
             </div>
             <div class="col">
-                <button type="submit" class="btn btn-info" id="pdfa-convert-button" name="pdfa_convert">
+                <button
+                    type="submit"
+                    class="btn btn-info"
+                    id="pdfa-convert-button"
+                    name="pdfa_convert"
+                    data-text-content="<?php echo $messages['convertButton'] ?>"
+                >
                     <?php echo $messages['convertButton'] ?>
                 </button>
             </div>
