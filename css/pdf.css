@@ -323,21 +323,6 @@ label {
   }
 }
 
-#conversion-details {
-  background: #0d1826;
-  color: #e9edf5;
-  border-radius: 8px;
-  border: 1px solid #243447;
-  padding: 12px;
-  white-space: pre-wrap;
-  word-break: break-word;
-  margin-top: 12px;
-}
-
 #conversion-result {
   margin-top: 10px;
-}
-
-#conversion-details {
-  display: none;
 }

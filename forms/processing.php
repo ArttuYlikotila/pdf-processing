@@ -82,7 +82,6 @@ if ($simplified_conversion) {
                 data-ready-label="<?php echo $messages['downloadLabel'] ?>"
             >
             </div>
-            <pre id="conversion-details" class="conversion-hidden"></pre>
         </div>
     </form>
 </div>

@@ -4,7 +4,6 @@ const statusContainer = document.getElementById('conversion-status');
 const statusText = document.getElementById('conversion-status-text');
 const statusIcon = document.getElementById('conversion-status-icon');
 const resultContainer = document.getElementById('conversion-result');
-const conversionDetails = document.getElementById('conversion-details');
 
 /**
  * Add or remove "conversion-hidden" CSS class to/from HTML element
@@ -87,22 +86,6 @@ function renderDownload(data) {
   toggleElementHidden(resultContainer, false);
 };
 
-/**
- * Update contents of #conversion-details element
- *
- * @param {string} summary Summary of conversion process
- */
-function updateDetails(summary) {
-  if (summary) {
-    conversionDetails.textContent = summary;
-    // TODO: this does not make the element visible, since it has display: none set in CSS file, implementation should be changed if element should be made visible
-    toggleElementHidden(conversionDetails, false);
-  } else {
-    conversionDetails.textContent = '';
-    toggleElementHidden(conversionDetails, true);
-  }
-};
-
 let statusPoller = null;
 
 /**
@@ -162,7 +145,6 @@ function handleFinalStatus(data, successText, failedText) {
   renderDownload(data);
   statusContainer.querySelector('.spinner-border').remove();
   convertButton.innerHTML = convertButton.dataset.textContent;
-  updateDetails(data.returnValue || '');
   stopPolling();
 };
 
@@ -201,7 +183,6 @@ convertButton?.addEventListener('click', async (event) => {
   convertButton.disabled = true;
   setStatus('info', inProgressText, true);
   toggleElementHidden(resultContainer, true);
-  toggleElementHidden(conversionDetails, true);
 
   pollStatus(successText, failedText);
 
@@ -236,12 +217,9 @@ convertButton?.addEventListener('click', async (event) => {
       if (statusData.status === 'success' || statusData.status === 'error') {
         handleFinalStatus(statusData, successText, failedText);
       }
-      else {
-        updateDetails(data.returnValue || '');
-      }
     }
     catch (err) {
-      updateDetails(data.returnValue || '');
+      console.log(err);
     }
   }
   catch (error) {
