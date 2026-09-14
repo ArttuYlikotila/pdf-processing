@@ -205,46 +205,49 @@ convertButton?.addEventListener('click', async (event) => {
 
   pollStatus(successText, failedText);
 
-  fetch('convert.php', {
-    method: 'POST',
-    body: formData,
-    credentials: 'same-origin',
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === 'success') {
-        handleFinalStatus(data, successText, failedText);
-        return;
+  try {
+    const response = await fetch('convert.php', {
+      method: "POST",
+      body: formData,
+      credentials: 'same-origin'
+    });
+
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+
+    const data = await response.json();
+    console.log(data);
+
+    if (data.status === 'success') {
+      handleFinalStatus(data, successText, failedText);
+      return;
+    }
+
+    try {
+      const conversionStatus = await fetch('conversion_status.php', { credentials: 'same-origin' });
+
+      if (!conversionStatus.ok) {
+        throw new Error();
       }
 
-      fetch('conversion_status.php', { credentials: 'same-origin' })
-        .then((response) => response.json())
-        .then((statusData) => {
-          if (statusData.status === 'success' || statusData.status === 'error') {
-            handleFinalStatus(statusData, successText, failedText);
-          } else {
-            updateDetails(data.returnValue || '');
-          }
-        })
-        .catch(() => {
-          updateDetails(data.returnValue || '');
-        });
-      })
-    .catch(() => {
-      handleFinalStatus({ status: 'error', message: failedText }, successText, failedText);
-    })
-    .finally(() => {
-      convertButton.disabled = false;
-    });
-});
+      const statusData = await conversionStatus.json();
 
-resultBox?.addEventListener('click', (event) => {
-  const downloadTrigger = event.target.closest('[data-download-url]');
-
-  if (!downloadTrigger) {
-    return;
+      if (statusData.status === 'success' || statusData.status === 'error') {
+        handleFinalStatus(statusData, successText, failedText);
+      }
+      else {
+        updateDetails(data.returnValue || '');
+      }
+    }
+    catch (err) {
+      updateDetails(data.returnValue || '');
+    }
   }
-
-  event.preventDefault();
-  downloadFile(downloadTrigger.dataset.downloadUrl, downloadTrigger.dataset.downloadName || '');
+  catch (error) {
+    handleFinalStatus({ status: 'error', message: failedText }, successText, failedText);
+  }
+  finally {
+    convertButton.disabled = false;
+  }
 });
