@@ -18,6 +18,11 @@ body {
   padding-bottom: 70px;
 }
 
+nav *:focus {
+  outline: 2px dashed #fff;
+  outline-offset: 2px;
+}
+
 .top-buffer {
   margin-top: 20px;
 }
@@ -62,8 +67,6 @@ body {
 .page-header a:visited {
   color: #ffffff;
   text-decoration: none;
-  /* This setting should not be used, because this makes it impossible for keyboard user to know which element has the focus */
-  /* outline: 0; */
   line-height: inherit;
 }
 
@@ -71,17 +74,11 @@ body {
 .footer a:visited {
   color: #4e008e;
   text-decoration: none;
-  padding: 0 0.75rem;
-  /* This setting should not be used, because this makes it impossible for keyboard user to know which element has the focus */
-  /* outline: 0; */
 }
 
-h1 {
-  color: inherit;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.75rem;
-  font-size: 1.5rem;
+.footer a:focus {
+  outline: 2px dashed #000000;
+  outline-offset: 4px;
 }
 
 .navbar-toggler:focus {
@@ -163,6 +160,19 @@ h1 {
   .lang-selector span {
     display: none;
   }
+}
+
+h1 {
+  color: inherit;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+main a:focus, main button:focus {
+  outline: 2px dashed #000000!important;
+  outline-offset: 2px;
 }
 
 .content-card {
