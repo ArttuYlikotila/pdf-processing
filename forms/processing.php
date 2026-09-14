@@ -31,27 +31,6 @@ if ($simplified_conversion) {
             </span>
         </p>
 
-        <?php if (!$simplified_conversion):?>
-        <div class="row top-buffer">
-            <div class="col-sm-3">
-                <?php echo($messages['pdfaValidateMessage']) ?>
-            </div>
-            <div class="col-sm-3">
-                <?php createSelectBox('pdfa_level', $messages['pdfaLevel']); ?>
-            </div>
-            <div class="col-sm-3">
-                <button
-                    type="submit"
-                    class="btn btn-success"
-                    name="pdfa_validate"
-                    value="<?php echo $messages['validateButton'] ?>"
-                >
-                    <?php echo $messages['validateButton'] ?>
-                </button>
-            </div>
-        </div>
-        <?php endif; ?>
-
         <?php include 'elements/metadata.php'; ?>
 
         <div class="row top-buffer control-buttons">
