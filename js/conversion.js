@@ -43,12 +43,11 @@ function setStatus(type, text, spinning = false) {
     iconClasses.push('bi-check');
   } else if (type === 'danger') {
     iconClasses.push('bi-exclamation-triangle-fill');
-  } else {
-    iconClasses.push('bi-arrow-repeat');
   }
 
   if (spinning) {
-    iconClasses.push('conversion-spinner');
+    iconClasses.push('visually-hidden');
+    statusContainer.prepend(createSpinner());
   }
 
   resetIcon(iconClasses);
@@ -210,17 +209,18 @@ function handleFinalStatus(data, successText, failedText) {
   }
 
   renderDownload(data);
+  statusContainer.querySelector('.spinner-border').remove();
   convertButton.innerHTML = convertButton.dataset.textContent;
   updateDetails(data.returnValue || '');
   stopPolling();
 };
 
 /**
- * Create and return elements for adding spinner within a button element wrapped in document fragment
+ * Create and return elements for adding a spinner wrapped in document fragment
  *
  * @returns {HTMLDocumentFragment}
  */
-function createSpinnerBtn() {
+function createSpinner() {
   const spinner = document.createElement("span");
   spinner.classList.add("spinner-border", "spinner-border-sm");
   spinner.setAttribute("aria-hidden", true);
@@ -238,7 +238,7 @@ convertButton?.addEventListener('click', async (event) => {
   event.preventDefault();
 
   convertButton.textContent = "";
-  convertButton.appendChild(createSpinnerBtn());
+  convertButton.appendChild(createSpinner());
 
   const inProgressText = statusContainer.dataset.inProgress;
   const successText = statusContainer.dataset.success;
