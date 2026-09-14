@@ -36,7 +36,7 @@
     <div class="row top-buffer">
         <p class="col-sm-6 fw-bold"><?php echo($messages['deleteMessage']) ?></p>
         <div class="col-sm-3">
-            <button type="submit" class="btn btn-primary" name="delete_file" value="<?php echo $messages['deleteButton'] ?>">
+            <button type="submit" class="btn btn-tuni" name="delete_file" value="<?php echo $messages['deleteButton'] ?>">
                 <?php echo $messages['deleteButton'] ?>
             </button>
         </div>

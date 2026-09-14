@@ -25,7 +25,7 @@
             <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" accept=".pdf" />
         </div>
 
-        <button type="submit" class="btn btn-primary mt-2" name="submit">
+        <button type="submit" class="btn btn-tuni mt-2" name="submit">
             <?php echo $messages['uploadFile'] ?>
         </button>
     </div>

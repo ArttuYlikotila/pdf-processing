@@ -53,11 +53,11 @@ if ($simplified_conversion) {
 
         <?php include 'elements/metadata.php'; ?>
 
-        <div class="row top-buffer">
+        <div class="row top-buffer control-buttons">
             <div class="col-md-4 col-lg-3">
                 <?php echo($messages['pdfaConvertMessage']) ?>
             </div>
-            <div class="col">
+            <div class="col-2">
                 <button
                     type="submit"
                     class="btn btn-info"
@@ -69,9 +69,17 @@ if ($simplified_conversion) {
                     <?php echo $messages['convertButton'] ?>
                 </button>
             </div>
+
+            <div class="col-md-4 col-lg-3">
+                <p class="fw-bold"><?php echo($messages['deleteMessage']) ?></p>
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-tuni" name="delete_file" value="<?php echo $messages['deleteButton'] ?>">
+                    <?php echo $messages['deleteButton'] ?>
+                </button>
+            </div>
         </div>
 
-        <!-- TODO: add Bootstrap spinner, current spinner broke with the Bootstrap update -->
         <div class="conversion-info row mt-3">
             <div
                 id="conversion-status"
@@ -95,17 +103,6 @@ if ($simplified_conversion) {
             >
             </div>
             <pre id="conversion-details" class="conversion-hidden"></pre>
-        </div>
-
-        <div class="row top-buffer">
-            <div class="col-md-4 col-lg-3">
-                <p class="fw-bold"><?php echo($messages['deleteMessage']) ?></p>
-            </div>
-            <div class="col">
-                <button type="submit" class="btn btn-primary" name="delete_file" value="<?php echo $messages['deleteButton'] ?>">
-                    <?php echo $messages['deleteButton'] ?>
-                </button>
-            </div>
         </div>
     </div>
 </form>
