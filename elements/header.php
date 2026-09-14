@@ -31,7 +31,7 @@
     </head>
     <body>
         <header class="page-header">
-            <nav class="navbar">
+            <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                     <a class="logo-link" href="<?php echo $messages['logo_link'] ?>" target="_blank">
                         <img
@@ -40,35 +40,48 @@
                             alt="<?php echo $messages['logo_alt'] ?>"
                         />
                     </a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbar-collapse-content"
+                        aria-controls="navbar-collapse-content"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <i class="bi bi-list"></i>
+                    </button>
 
-                    <div class="nav-links">
-                        <?php foreach ($messages['navButton'] as $nav) {
-                            $navigator = explode(",", $nav);
-                        ?>
-                            <a class="nav-link" href="<?php echo $navigator[1] ?>">
-                                <i class="bi <?php echo $navigator[2] ?>" aria-hidden="true"></i>
-                                <?php echo $navigator[0] ?>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-content">
+                        <ul class="navbar-nav nav-links">
+                            <?php foreach ($messages['navButton'] as $nav) {
+                                $navigator = explode(",", $nav);
+                            ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo $navigator[1] ?>">
+                                        <i class="bi <?php echo $navigator[2] ?>" aria-hidden="true"></i>
+                                        <?php echo $navigator[0] ?>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+
+                        <div class="lang-selector">
+                            <?php $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2); ?>
+                            <a
+                                href="<?php echo htmlspecialchars($uri_parts[0], ENT_QUOTES, 'UTF-8') ?>?lang=en"
+                                <?php if ($lang === 'en') echo "class='chosen'" ?>
+                            >
+                                Englanti
                             </a>
-                        <?php } ?>
-                        <!-- TODO: is this element needed for some reason? -->
-                        <!-- <li class="text-center active"></li> -->
-                    </div>
-
-                    <div class="lang-selector">
-                        <?php $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2); ?>
-                        <a
-                            href="<?php echo htmlspecialchars($uri_parts[0], ENT_QUOTES, 'UTF-8') ?>?lang=en"
-                            <?php if ($lang === 'en') echo "class='chosen'" ?>
-                        >
-                            Englanti
-                        </a>
-                        <span> | </span>
-                        <a
-                            href="<?php echo htmlspecialchars($uri_parts[0], ENT_QUOTES, 'UTF-8') ?>?lang=fi"
-                            <?php if ($lang === 'fi') echo "class='chosen'" ?>
-                        >
-                            Suomi
-                        </a>
+                            <span> | </span>
+                            <a
+                                href="<?php echo htmlspecialchars($uri_parts[0], ENT_QUOTES, 'UTF-8') ?>?lang=fi"
+                                <?php if ($lang === 'fi') echo "class='chosen'" ?>
+                            >
+                                Suomi
+                            </a>
+                        </div>
                     </div>
                 </div>
             </nav>
