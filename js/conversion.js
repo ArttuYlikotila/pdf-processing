@@ -14,7 +14,7 @@ const conversionDetails = document.getElementById('conversion-details');
  */
 function toggleElementHidden(element, hidden) {
   element.classList.toggle('conversion-hidden', hidden);
-}
+};
 
 /**
  * Replace current class names of status icon with new class names
@@ -66,6 +66,8 @@ function renderDownload(data) {
     toggleElementHidden(resultContainer, true);
     return;
   }
+
+  resultContainer.innerHTML = '';
 
   const displayName = data.displayName ? `(${data.displayName})` : '';
   const downloadName = data.displayName || '';
@@ -208,12 +210,35 @@ function handleFinalStatus(data, successText, failedText) {
   }
 
   renderDownload(data);
+  convertButton.innerHTML = convertButton.dataset.textContent;
   updateDetails(data.returnValue || '');
   stopPolling();
 };
 
-convertButton?.addEventListener('click', (event) => {
+/**
+ * Create and return elements for adding spinner within a button element wrapped in document fragment
+ *
+ * @returns {HTMLDocumentFragment}
+ */
+function createSpinnerBtn() {
+  const spinner = document.createElement("span");
+  spinner.classList.add("spinner-border", "spinner-border-sm");
+  spinner.setAttribute("aria-hidden", true);
+  const accessibilityMessage = document.createElement("span");
+  accessibilityMessage.textContent = convertButton.dataset.inProgress;
+  accessibilityMessage.setAttribute("role", "status");
+  accessibilityMessage.classList.add("visually-hidden");
+
+  const fragment = document.createDocumentFragment();
+  fragment.append(spinner, accessibilityMessage);
+  return fragment;
+}
+
+convertButton?.addEventListener('click', async (event) => {
   event.preventDefault();
+
+  convertButton.textContent = "";
+  convertButton.appendChild(createSpinnerBtn());
 
   const inProgressText = statusContainer.dataset.inProgress;
   const successText = statusContainer.dataset.success;

@@ -63,6 +63,7 @@ if ($simplified_conversion) {
                     class="btn btn-info"
                     id="pdfa-convert-button"
                     name="pdfa_convert"
+                    data-in-progress="<?php echo $messages['conversionInProgress'] ?>"
                     data-text-content="<?php echo $messages['convertButton'] ?>"
                 >
                     <?php echo $messages['convertButton'] ?>
