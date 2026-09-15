@@ -14,23 +14,21 @@
  * Input fields for additional metadata.
  */
 ?>
-<div>
-    <div class="info-text mb-3">
-        <?php echo $messages['pdfaMetadataMessage'] ?>
-    </div>
+<div class="info-text mb-3">
+    <?= $messages['pdfaMetadataMessage'] ?>
 </div>
 
-<?php foreach ($configs['metadataField'] as $field) { ?>
-<div class="row top-buffer">
-    <label for="<?php echo $field ?>" class="col-form-label col-md-4 col-lg-3">
-        <?php echo $messages[$field . 'Label'] ?>
-    </label>
-    <div class="col-md-8 col-lg-9 pb-3">
-        <?php if ($field !== 'description'): ?>
-            <input id="<?php echo $field ?>" name="<?php echo $field ?>" type="text" class="form-control" />
-        <?php else: ?>
-            <textarea id="<?php echo $field ?>" name="<?php echo $field ?>" type="text" class="form-control"></textarea>
-        <?php endif; ?>
+<?php foreach ($configs['metadataField'] as $field): ?>
+    <div class="row top-buffer">
+        <label for="<?= $field ?>" class="col-form-label col-md-4 col-lg-3">
+            <?= $messages[$field . 'Label'] ?>
+        </label>
+        <div class="col-md-8 col-lg-9 pb-3">
+            <?php if ($field !== 'description'): ?>
+                <input id="<?= $field ?>" name="<?= $field ?>" type="text" class="form-control" />
+            <?php else: ?>
+                <textarea id="<?= $field ?>" name="<?= $field ?>" type="text" class="form-control"></textarea>
+            <?php endif; ?>
+        </div>
     </div>
-</div>
-<?php } ?>
+<?php endforeach; ?>
