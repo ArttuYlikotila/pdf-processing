@@ -14,12 +14,9 @@
  * Offers the processed file to download.
  */
 ?>
-<div class="row top-buffer">
-    <p class="col-sm-6"><?php echo $messages['downloadLabel'] ?></p>
-    <div class="col-sm-3">
-        <i class="bi bi bi-box-arrow-down" aria-hidden="true"></i>
-        <a href="stream.php" class="alert-link">
-            <?php echo $messages['downloadButton'] ?>
-        </a>
-    </div>
+<div class="message-container message-success mb-3">
+    <i class="bi bi bi-box-arrow-down" aria-hidden="true"></i>
+    <a href="stream.php" class="alert-link">
+        <?= $messages['downloadLabel'] ?>
+    </a>
 </div>
