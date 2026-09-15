@@ -32,7 +32,7 @@
                     name="<?= $field ?>"
                     type="text"
                     class="form-control"
-                    maxlength="<?= $configs['maxDescriptionLenght'] ?>"
+                    maxlength="<?= $configs['descriptionMaxLenght'] ?>"
                     rows="3"></textarea>
                 <p class="char-counter">0/2000</p>
             <?php endif; ?>
