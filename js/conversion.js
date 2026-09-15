@@ -229,3 +229,11 @@ convertButton?.addEventListener('click', async (event) => {
     convertButton.disabled = false;
   }
 });
+
+// Input event listener for the #description <textarea> that updates the associated character counter element
+document.getElementById("description")?.addEventListener("input", (event) => {
+  const textArea = event.target;
+  const counter = textArea.nextElementSibling;
+  const maxLength = textArea.maxLength;
+  counter.textContent = `${textArea.textLength}/${maxLength}`;
+});

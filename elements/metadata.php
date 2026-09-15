@@ -27,7 +27,14 @@
             <?php if ($field !== 'description'): ?>
                 <input id="<?= $field ?>" name="<?= $field ?>" type="text" class="form-control" />
             <?php else: ?>
-                <textarea id="<?= $field ?>" name="<?= $field ?>" type="text" class="form-control"></textarea>
+                <textarea
+                    id="<?= $field ?>"
+                    name="<?= $field ?>"
+                    type="text"
+                    class="form-control"
+                    maxlength="<?= $configs['maxDescriptionLenght'] ?>"
+                    rows="3"></textarea>
+                <p class="char-counter">0/2000</p>
             <?php endif; ?>
         </div>
     </div>
