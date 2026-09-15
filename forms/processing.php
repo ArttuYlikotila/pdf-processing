@@ -22,10 +22,10 @@ if ($simplified_conversion) {
 
 ?>
 <div class="container content-card">
-    <h1><?php echo $messages['headline'] ?></h1>
+    <h1><?= $messages['headline'] ?></h1>
     <form method="post" action="index.php" id="processing-form">
         <p>
-            <?php echo $messages['uploadedFile'] ?>
+            <?= $messages['uploadedFile'] ?>
             <span class="fw-bold">
                 <?php echo htmlspecialchars($_SESSION['originalFileName'], ENT_QUOTES, 'UTF-8') ?>
             </span>
@@ -33,31 +33,26 @@ if ($simplified_conversion) {
 
         <?php include 'elements/metadata.php'; ?>
 
-        <div class="row top-buffer control-buttons">
-            <div class="col-md-4 col-lg-3">
-                <?php echo($messages['pdfaConvertMessage']) ?>
-            </div>
-            <div class="col-2">
-                <button
-                    type="submit"
-                    class="btn btn-info"
-                    id="pdfa-convert-button"
-                    name="pdfa_convert"
-                    data-in-progress="<?php echo $messages['conversionInProgress'] ?>"
-                    data-text-content="<?php echo $messages['convertButton'] ?>"
-                >
-                    <?php echo $messages['convertButton'] ?>
-                </button>
-            </div>
+        <div class="control-buttons">
+            <button
+                type="submit"
+                class="btn btn-tuni"
+                id="pdfa-convert-button"
+                name="pdfa_convert"
+                data-in-progress="<?= $messages['conversionInProgress'] ?>"
+                data-text-content="<?= $messages['convertButton'] ?>"
+            >
+                <?= $messages['convertButton'] ?>
+            </button>
 
-            <div class="col-md-4 col-lg-3">
-                <p class="fw-bold"><?php echo($messages['deleteMessage']) ?></p>
-            </div>
-            <div class="col-2">
-                <button type="submit" class="btn btn-tuni" name="delete_file" value="<?php echo $messages['deleteButton'] ?>">
-                    <?php echo $messages['deleteButton'] ?>
-                </button>
-            </div>
+            <button
+                type="submit"
+                class="btn btn-danger"
+                name="delete_file"
+                value="<?= $messages['deleteButton'] ?>"
+            >
+                <?= $messages['deleteButton'] ?>
+            </button>
         </div>
 
         <div class="conversion-info mt-3">
@@ -65,21 +60,21 @@ if ($simplified_conversion) {
                 id="conversion-status"
                 class="message-container message-success conversion-hidden"
                 role="alert"
-                data-in-progress="<?php echo $messages['conversionInProgress'] ?>"
-                data-success="<?php echo $messages['conversionSuccess'] ?>"
-                data-failed="<?php echo $messages['conversionFailed'] ?>"
+                data-in-progress="<?= $messages['conversionInProgress'] ?>"
+                data-success="<?= $messages['conversionSuccess'] ?>"
+                data-failed="<?= $messages['conversionFailed'] ?>"
             >
                 <i id="conversion-status-icon" class="bi bi-arrow-repeat conversion-spinner" aria-hidden="true"></i>
                 <span id="conversion-status-text">
-                    <?php echo $messages['conversionIdle'] ?>
+                    <?= $messages['conversionIdle'] ?>
                 </span>
             </div>
 
             <div
                 id="conversion-result"
                 class="message-container message-success conversion-hidden"
-                data-download-label="<?php echo $messages['downloadButton'] ?>"
-                data-ready-label="<?php echo $messages['downloadLabel'] ?>"
+                data-download-label="<?= $messages['downloadButton'] ?>"
+                data-ready-label="<?= $messages['downloadLabel'] ?>"
             >
             </div>
         </div>

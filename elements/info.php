@@ -30,7 +30,7 @@
 
     <form method="POST" action="index.php" class="top-buffer">
         <p class="fw-bold"><?= $messages['deleteMessage'] ?></p>
-        <button type="submit" class="btn btn-tuni" name="delete_file" value="<?= $messages['deleteButton'] ?>">
+        <button type="submit" class="btn btn-danger" name="delete_file" value="<?= $messages['deleteButton'] ?>">
             <?= $messages['deleteButton'] ?>
         </button>
     </form>

@@ -207,7 +207,7 @@ label {
   padding: 0.75rem 1.25rem;
   font-weight: 600;
   letter-spacing: 0.3px;
-  width: 6.5rem;
+  width: 12.75rem;
 }
 
 .btn-tuni {
@@ -221,6 +221,14 @@ label {
   background-color: #3b006c;
   border-color: #3b006c;
   color: #fff;
+}
+
+.btn-tuni:disabled {
+  background-color: #4e008e;
+  border-color: #4e008e;
+  color: #fff;
+  pointer-events: none;
+  opacity: initial;
 }
 
 .btn-info {
@@ -245,11 +253,27 @@ label {
   border-color: #0a7e57;
 }
 
+.control-buttons {
+  display: flex;
+  gap: 2rem;
+}
+
+.control-buttons button:first-of-type {
+  margin-left: auto;
+}
+
 @media screen and (max-width: 768px) {
   .control-buttons button {
     margin-top: 0.5rem;
     margin-bottom: 1rem;
-    width: 10rem;
+  }
+
+  .control-buttons button:first-of-type {
+    margin-left: 0;
+  }
+
+  .control-buttons button:last-of-type {
+    margin-left: auto;
   }
 }
 
