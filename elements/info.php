@@ -16,29 +16,22 @@
 ?>
 
 <div class="container content-card top-buffer">
-    <div class="row">
-        <div class="col-sm-12">
-        <?php if ($processor->returnOk($processingReturnValue)) {
-            // If there is a processed file, offer it to download
-            if (!empty($_SESSION['processedFile']) && file_exists($_SESSION['processedFile'])) {
-                include("elements/download.php");
-            }
-            } else { ?>
-            <!-- TODO: this should not be a link or a button, instead should be message container of some kind-->
-            <a href="#" class="btn btn-danger btn-lg">
-                <i class="bi bi-x-circle-fill"></i>
-                <?php echo $messages['failMessage'] ?>
-            </a>
-        <?php } ?>
+    <?php if ($processor->returnOk($processingReturnValue)) {
+        // If there is a processed file, offer it to download
+        if (!empty($_SESSION['processedFile']) && file_exists($_SESSION['processedFile'])) {
+            include("elements/download.php");
+        }
+        } else { ?>
+        <div class="message-container message-danger">
+            <i class="bi bi-x-circle-fill"></i>
+            <?= $messages['failMessage'] ?>
         </div>
-    </div>
+    <?php } ?>
 
-    <div class="row top-buffer">
-        <p class="col-sm-6 fw-bold"><?php echo($messages['deleteMessage']) ?></p>
-        <div class="col-sm-3">
-            <button type="submit" class="btn btn-tuni" name="delete_file" value="<?php echo $messages['deleteButton'] ?>">
-                <?php echo $messages['deleteButton'] ?>
-            </button>
-        </div>
-    </div>
+    <form method="POST" action="index.php" class="top-buffer">
+        <p class="fw-bold"><?= $messages['deleteMessage'] ?></p>
+        <button type="submit" class="btn btn-tuni" name="delete_file" value="<?= $messages['deleteButton'] ?>">
+            <?= $messages['deleteButton'] ?>
+        </button>
+    </form>
 </div>
