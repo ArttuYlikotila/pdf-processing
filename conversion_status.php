@@ -49,10 +49,7 @@ if (!empty($lockFile) && file_exists($lockFile)) {
     }
 }
 
-if (
-    !empty($_SESSION['processedFile'])
-    && file_exists($_SESSION['processedFile'])
-) {
+if (!empty($_SESSION['processedFile']) && file_exists($_SESSION['processedFile'])) {
     $response['status'] = 'success';
     $response['message'] = $messages['conversionSuccess'] ?? 'Conversion finished.';
     $response['downloadUrl'] = 'stream.php';

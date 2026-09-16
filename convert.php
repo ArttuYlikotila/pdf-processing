@@ -44,6 +44,7 @@ $metadataArray = $processor->createMetadataArray();
 
 if (!empty($metadataArray)) {
     $fileContent = $xmpCreator->createXmp($metadataArray);
+
     if (!empty($fileContent)) {
         $processor->saveXmpFile($fileContent);
     }
@@ -61,6 +62,7 @@ try {
     if (session_status() === PHP_SESSION_ACTIVE) {
         session_write_close();
     }
+
     $processingReturnValue = $processor->executePdfProcessing($args);
     $processingReturnValue = $processor->filterReturnValue($processingReturnValue);
 
@@ -83,6 +85,7 @@ try {
     } else {
         $response['message'] = $messages['conversionFailed'] ?? ($messages['failMessage'] ?? 'Conversion failed.');
         $response['status'] = 'error';
+
         if (!empty($lockFile)) {
             $processor->writeLockFileStatus($lockFile, 'failed');
         }

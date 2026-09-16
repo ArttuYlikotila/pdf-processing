@@ -4,8 +4,8 @@
  *
  * This software is licensed under GNU General Public License version 3 or later.
  *
- * For the full copyright and license information, 
- * please see https://www.gnu.org/licenses/gpl-3.0.html or read 
+ * For the full copyright and license information,
+ * please see https://www.gnu.org/licenses/gpl-3.0.html or read
  * the LICENSE.txt file that was distributed with this source code.
  */
 ?>
@@ -18,7 +18,6 @@
  */
 
 class SessionControl {
-
     /**
      * Deletes the uploaded and processed files and clears the session.
      */
@@ -29,16 +28,19 @@ class SessionControl {
                 unlink($_SESSION['uploadFile']);
             }
         }
+
         if (!empty($_SESSION['processedFile'])) {
             if (file_exists($_SESSION['processedFile'])) {
                 unlink($_SESSION['processedFile']);
             }
         }
+
         if (!empty($_SESSION['xmpFile'])) {
             if (file_exists($_SESSION['xmpFile'])) {
                 unlink($_SESSION['xmpFile']);
             }
         }
+
         unset($_SESSION['uploadFile']);
         unset($_SESSION['processedFile']);
         unset($_SESSION['xmpFile']);
@@ -51,5 +53,4 @@ class SessionControl {
         $this->clearSession();
         session_destroy();
     }
-
 }

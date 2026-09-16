@@ -17,7 +17,6 @@
  */
 class PdfProcessing
 {
-
     /**
      * The array with configurations.
      */
@@ -47,13 +46,14 @@ class PdfProcessing
     {
         $cleanExt = preg_replace('/[^a-zA-Z0-9.]/', '', $fileExt);  // Basic sanitization
         $hashAlgo = $this->configs['hash'];
+
         if (!is_string($hashAlgo) || !in_array($hashAlgo, hash_algos(), true)) {
             error_log("Invalid hash algorithm '{$hashAlgo}' configured. Falling back to sha256.");
             $hashAlgo = 'sha256';
         }
+
         return hash($hashAlgo, $filename . microtime(true)) . $cleanExt;
     }
-
 
     /**
      * Saves a file and stores the filename and the original name in the
@@ -108,7 +108,6 @@ class PdfProcessing
         return false;
     }
 
-
     /**
      * Creates name and display name of the processed file and saves them to the session.
      *
@@ -137,14 +136,15 @@ class PdfProcessing
         if (!file_exists($this->configs['xmpPath'])) {
             mkdir($this->configs['xmpPath'], 0755, true);
         }
+
         $xmpPath = $this->configs['xmpPath'] . basename($_SESSION['uploadFile'], '.pdf') . '.xmp';
+
         if (file_put_contents($xmpPath, $content)) {
             $_SESSION['xmpFile'] = $xmpPath;
         } else {
             $errorMessage = $this->messages['xmpFileNotSaved'];
             error_log("The .xmp file could not be saved!");
         }
-
     }
 
     /**
@@ -177,6 +177,7 @@ class PdfProcessing
 
             if (isset($_POST[$field])) {
                 $value = trim($_POST[$field]);
+
                 if (!empty($value)) {
                     $metadataArray[$field] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
                 }
@@ -218,7 +219,6 @@ class PdfProcessing
         return array_filter($args, fn($v) => trim($v) !== '');
     }
 
-
     /**
      * Creates the arguments for PDF/A validation.
      *
@@ -250,6 +250,7 @@ class PdfProcessing
             . $_SESSION['processedFile'] . ' ' . $this->configs['pdfOverwriteArg'] . ' '
             . $this->configs['pdfLangArg'] . $lang . ' '
             . $this->configs['cachefolderArg'];
+
         return $args;
     }
 
@@ -266,6 +267,7 @@ class PdfProcessing
             . $this->configs['cachefolderArg'] . ' '
             . $this->configs['pdfLangArg'] . $lang . ' '
             . $_SESSION['uploadFile'];
+
         return $args;
     }
 
@@ -398,7 +400,6 @@ class PdfProcessing
         }
     }
 
-
     /**
      * Returns the pdf profile in the profiles directory.
      *
@@ -411,9 +412,10 @@ class PdfProcessing
             error_log("The pdf profiles path in the config.ini '$profileDir' is not a valid directory");
             return array();
         }
-        $profiles = scandir($profileDir);
 
+        $profiles = scandir($profileDir);
         $cleanedProfiles = array();
+
         foreach ($profiles as $val) {
             if ($val != '.' && $val != '..') {
                 array_push($cleanedProfiles, $val);
@@ -448,7 +450,6 @@ class PdfProcessing
         readfile($path);
     }
 
-
     /**
      * Filters a string line by line.
      *
@@ -459,11 +460,13 @@ class PdfProcessing
     {
         $filteredValue = '';
         $lines = explode(PHP_EOL, $returnValue);
+
         foreach ($lines as $line) {
             if (preg_match($this->configs['lineRegex'], $line)) {
                 $filteredValue .= $line . PHP_EOL;
             }
         }
+
         return $filteredValue;
     }
 
@@ -477,11 +480,13 @@ class PdfProcessing
     {
         $lines = explode(PHP_EOL, $returnValue);
         $value = "nothing found";
+
         foreach ($lines as $line) {
             if (preg_match($this->configs['summaryRegex'], $line)) {
                 $value = preg_replace($this->configs['summaryRegex'], '$1', $line);
             }
         }
+
         return strcmp("0", $value) == 0;
     }
 }

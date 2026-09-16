@@ -15,25 +15,25 @@
  *
  */
 
-    include_once("environment/init.php");
-    include_once("environment/functions.php");
+include_once("environment/init.php");
+include_once("environment/functions.php");
 
-    // The handler manages the data from the http request
-    include_once("environment/handler.php");
+// The handler manages the data from the http request
+include_once("environment/handler.php");
 
-    include_once("elements/header.php");
-    include_once("elements/alerts.php");
+include_once("elements/header.php");
+include_once("elements/alerts.php");
 
-    // If there is no target file, show upload form
-    if (empty($_SESSION['uploadFile']) || !file_exists($_SESSION['uploadFile'])) {
-        include_once("forms/upload.php");
-    } else {
-        include_once("forms/processing.php");
-    }
+// If there is no target file, show upload form
+if (empty($_SESSION['uploadFile']) || !file_exists($_SESSION['uploadFile'])) {
+    include_once("forms/upload.php");
+} else {
+    include_once("forms/processing.php");
+}
 
-    // If there are arguments of a processing return value, show them
-    if (!empty($processingReturnValue) || !empty($args)) {
-        include_once("elements/info.php");
-    }
+// If there are arguments of a processing return value, show them
+if (!empty($processingReturnValue) || !empty($args)) {
+    include_once("elements/info.php");
+}
 
-    include_once("elements/footer.php");
+include_once("elements/footer.php");
