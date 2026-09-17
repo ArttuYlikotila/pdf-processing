@@ -82,54 +82,6 @@ function renderDownload(data) {
   toggleElementHidden(resultContainer, false);
 };
 
-let statusPoller = null;
-
-/**
- * Stop status polling by clearing statusPoller interval
- */
-function stopPolling() {
-  if (statusPoller !== null) {
-    clearInterval(statusPoller);
-    statusPoller = null;
-  }
-};
-
-/**
- * Start polling the status of conversion process in intervals of 5 seconds
- *
- * @param {string} successText Fallback text for success status
- * @param {string} failedText Fallback text for error status
- */
-function pollStatus(successText, failedText) {
-  if (statusPoller !== null) {
-    return;
-  }
-
-  statusPoller = setInterval(async () => {
-    try {
-      const response = await fetch('conversion_status.php', { credentials: 'same-origin' });
-
-      if (!response.ok) {
-        throw new Error(response.status);
-      }
-
-      const data = await response.json();
-
-      if (data.status === 'success') {
-        setStatus('success', data.message || successText, false);
-        renderDownload(data);
-        stopPolling();
-      } else if (data.status === 'error') {
-        setStatus('danger', data.message || failedText, false);
-        stopPolling();
-      }
-    }
-    catch(error) {
-      // Ignore polling errors; the main request will handle failures.
-    }
-  }, 5000);
-};
-
 /**
  * Handle finishing the conversion process
  *
@@ -147,7 +99,6 @@ function handleFinalStatus(data, successText, failedText) {
   renderDownload(data);
   statusContainer.querySelector('.spinner-border').remove();
   convertButton.innerHTML = convertButton.dataset.textContent;
-  stopPolling();
 };
 
 /**
@@ -230,7 +181,6 @@ function handleFileConversion() {
   setStatus('info', inProgressText, true);
   toggleElementHidden(resultContainer, true);
 
-  pollStatus(successText, failedText);
   convertFile(formData, successText, failedText);
 }
 
