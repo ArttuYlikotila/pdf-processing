@@ -76,8 +76,6 @@ function renderDownload(data) {
   const link = document.createElement("a");
   link.href = data.downloadUrl;
   link.classList.add("alert-link");
-  link.setAttribute("data-download-url", data.downloadUrl);
-  link.setAttribute("data-download-name", downloadName);
   link.textContent = `${resultContainer.dataset.readyLabel} ${displayName}`;
 
   resultContainer.append(icon, link);
@@ -223,7 +221,6 @@ function handleFileConversion() {
   const successText = statusContainer.dataset.success;
   const failedText = statusContainer.dataset.failed;
 
-  // TODO: formData is not trimmed or sanitized here, does PHP handle that and/or should it be done here?
   const formData = new FormData(form);
 
   // TODO: should this be moved to configs?
