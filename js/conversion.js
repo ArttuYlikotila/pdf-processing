@@ -67,7 +67,6 @@ function renderDownload(data) {
   }
 
   const displayName = data.displayName ? `(${data.displayName})` : '';
-  const downloadName = data.displayName || '';
 
   const icon = document.createElement("i");
   icon.classList.add("bi", "bi-box-arrow-down");
@@ -111,6 +110,7 @@ function createSpinner() {
   spinner.classList.add("spinner-border", "spinner-border-sm");
   spinner.setAttribute("aria-hidden", true);
   const accessibilityMessage = document.createElement("span");
+  // TODO: it should be considered if the content of this message could be improved
   accessibilityMessage.textContent = convertButton.dataset.inProgress;
   accessibilityMessage.setAttribute("role", "status");
   accessibilityMessage.classList.add("visually-hidden");
@@ -133,7 +133,7 @@ async function convertFile(metadata, successText, failedText) {
       method: "POST",
       body: metadata,
       credentials: 'same-origin',
-      signal: AbortSignal.timeout(6000)
+      signal: AbortSignal.timeout(6000) // should be 3 min === 180000
     });
 
     if (!response.ok) {
