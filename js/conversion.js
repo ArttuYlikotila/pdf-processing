@@ -171,30 +171,20 @@ function createSpinner() {
   return fragment;
 }
 
-convertButton?.addEventListener('click', async (event) => {
-  event.preventDefault();
-
-  convertButton.textContent = "";
-  convertButton.appendChild(createSpinner());
-
-  const inProgressText = statusContainer.dataset.inProgress;
-  const successText = statusContainer.dataset.success;
-  const failedText = statusContainer.dataset.failed;
-
-  const formData = new FormData(form);
-  formData.set('pdfa_convert', '1');
-
-  convertButton.disabled = true;
-  setStatus('info', inProgressText, true);
-  toggleElementHidden(resultContainer, true);
-
-  pollStatus(successText, failedText);
-
+/**
+ * Call backend to convert the file and handle the result
+ *
+ * @param {Object} metadata Metadata for the file from <form> element
+ * @param {string} successText Fallback text for success events
+ * @param {string} failedText Fallback text for failure events
+ */
+async function convertFile(metadata, successText, failedText) {
   try {
     const response = await fetch('convert.php', {
       method: "POST",
-      body: formData,
-      credentials: 'same-origin'
+      body: metadata,
+      credentials: 'same-origin',
+      signal: AbortSignal.timeout(6000)
     });
 
     if (!response.ok) {
@@ -204,34 +194,53 @@ convertButton?.addEventListener('click', async (event) => {
     const data = await response.json();
     console.log(data);
 
-    if (data.status === 'success') {
+    // TODO: could PHP process be changed so that in case of error the status of response would be in range 5**?
+    if (data.status === 'success' || data.status === 'error') {
       handleFinalStatus(data, successText, failedText);
-      return;
-    }
-
-    try {
-      const conversionStatus = await fetch('conversion_status.php', { credentials: 'same-origin' });
-
-      if (!conversionStatus.ok) {
-        throw new Error();
-      }
-
-      const statusData = await conversionStatus.json();
-
-      if (statusData.status === 'success' || statusData.status === 'error') {
-        handleFinalStatus(statusData, successText, failedText);
-      }
-    }
-    catch (err) {
-      console.log(err);
     }
   }
   catch (error) {
+    if (error.name === 'TimeoutError') {
+      console.warn("TIMEOUT ERROR");
+    }
+    // TODO: currently this branch is only visited in errors originating in JS code, fetch errors do not come here ever
+    console.log("IN THE ERROR ", error);
     handleFinalStatus({ status: 'error', message: failedText }, successText, failedText);
   }
   finally {
     convertButton.disabled = false;
   }
+}
+
+/**
+ * Handle all the actions needed for the file conversion process
+ */
+function handleFileConversion() {
+  convertButton.textContent = "";
+  convertButton.appendChild(createSpinner());
+
+  const inProgressText = statusContainer.dataset.inProgress;
+  const successText = statusContainer.dataset.success;
+  const failedText = statusContainer.dataset.failed;
+
+  // TODO: formData is not trimmed or sanitized here, does PHP handle that and/or should it be done here?
+  const formData = new FormData(form);
+
+  // TODO: should this be moved to configs?
+  formData.set('pdfa_convert', '1');
+
+  convertButton.disabled = true;
+  setStatus('info', inProgressText, true);
+  toggleElementHidden(resultContainer, true);
+
+  pollStatus(successText, failedText);
+  convertFile(formData, successText, failedText);
+}
+
+// Click event listener for starting the file conversion process
+convertButton?.addEventListener('click', (event) => {
+  event.preventDefault();
+  handleFileConversion();
 });
 
 // Input event listener for the #description <textarea> that updates the associated character counter element
