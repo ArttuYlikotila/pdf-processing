@@ -11,7 +11,7 @@
 ?>
         </main>
         <footer class="footer">
-            <div class="container text-center">
+            <div class="container">
                 <a href="<?php echo htmlspecialchars($messages['contact_link'], ENT_QUOTES, 'UTF-8') ?>" target="_blank">
                     <?php echo $messages['contact'] ?>
                 </a>
