@@ -59,13 +59,12 @@ function setStatus(type, text, spinning = false) {
  * @param {Object} data
  */
 function renderDownload(data) {
+  resultContainer.innerHTML = '';
+
   if (!data || data.status !== 'success' || !data.downloadUrl) {
-    resultContainer.innerHTML = '';
     toggleElementHidden(resultContainer, true);
     return;
   }
-
-  resultContainer.innerHTML = '';
 
   const displayName = data.displayName ? `(${data.displayName})` : '';
   const downloadName = data.displayName || '';
@@ -82,7 +81,6 @@ function renderDownload(data) {
   link.textContent = `${resultContainer.dataset.readyLabel} ${displayName}`;
 
   resultContainer.append(icon, link);
-
   toggleElementHidden(resultContainer, false);
 };
 
@@ -109,22 +107,28 @@ function pollStatus(successText, failedText) {
     return;
   }
 
-  statusPoller = setInterval(() => {
-    fetch('conversion_status.php', { credentials: 'same-origin' })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === 'success') {
-          setStatus('success', data.message || successText, false);
-          renderDownload(data);
-          stopPolling();
-        } else if (data.status === 'error') {
-          setStatus('danger', data.message || failedText, false);
-          stopPolling();
-        }
-      })
-      .catch(() => {
-        // Ignore polling errors; the main request will handle failures.
-      });
+  statusPoller = setInterval(async () => {
+    try {
+      const response = await fetch('conversion_status.php', { credentials: 'same-origin' });
+
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+
+      const data = await response.json();
+
+      if (data.status === 'success') {
+        setStatus('success', data.message || successText, false);
+        renderDownload(data);
+        stopPolling();
+      } else if (data.status === 'error') {
+        setStatus('danger', data.message || failedText, false);
+        stopPolling();
+      }
+    }
+    catch(error) {
+      // Ignore polling errors; the main request will handle failures.
+    }
   }, 5000);
 };
 
