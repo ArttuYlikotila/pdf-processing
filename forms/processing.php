@@ -58,7 +58,7 @@ if ($simplified_conversion) {
         <div class="conversion-info mt-3">
             <div
                 id="conversion-status"
-                class="message-container message-success conversion-hidden"
+                class="message-container message-success hidden"
                 role="alert"
                 data-in-progress="<?= $messages['conversionInProgress'] ?>"
                 data-success="<?= $messages['conversionSuccess'] ?>"
@@ -72,7 +72,7 @@ if ($simplified_conversion) {
 
             <div
                 id="conversion-result"
-                class="message-container message-success conversion-hidden"
+                class="message-container message-success hidden"
                 data-download-label="<?= $messages['downloadButton'] ?>"
                 data-ready-label="<?= $messages['downloadLabel'] ?>"
             >

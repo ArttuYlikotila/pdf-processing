@@ -6,13 +6,13 @@ const statusIcon = document.getElementById('conversion-status-icon');
 const resultContainer = document.getElementById('conversion-result');
 
 /**
- * Add or remove "conversion-hidden" CSS class to/from HTML element
+ * Add or remove "hidden" CSS class to/from HTML element
  *
  * @param {HTMLElement} element
  * @param {boolean} hidden Boolean indicating if the hidden class should be added or removed
  */
 function toggleElementHidden(element, hidden) {
-  element.classList.toggle('conversion-hidden', hidden);
+  element.classList.toggle('hidden', hidden);
 };
 
 /**
