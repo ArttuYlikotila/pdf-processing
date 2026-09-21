@@ -15,19 +15,24 @@
  */
 ?>
 <div class="container content-card">
-    <h1><?php echo $messages['headline'] ?></h1>
+    <h1><?= $messages['headline'] ?></h1>
     <form method="post" action="index.php" enctype="multipart/form-data">
-        <p class="mb-3"><?php echo $messages['introduction'] ?></p>
+        <p class="mb-3"><?= $messages['introduction'] ?></p>
 
-        <div class="mb-1">
-            <label class="form-label" for="fileToUpload">
-                <?php echo $messages['selectFile'] ?>
+        <div class="file-upload">
+            <label
+                for="fileToUpload"
+                data-file-not-pdf="<?= $messages['uploadNoPdf'] ?>"
+                data-uploaded-file="<?= $messages['uploadedFile'] ?>"
+            >
+                <i class="bi bi-cloud-upload" aria-hidden="true"></i>
+                <?= $messages['selectFile'] ?>
             </label>
-            <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" accept=".pdf" />
+            <input type="file" name="fileToUpload" id="fileToUpload" accept=".pdf" />
         </div>
 
-        <button type="submit" class="btn btn-tuni mt-2" name="submit">
-            <?php echo $messages['uploadFile'] ?>
+        <button type="submit" id="start-conversion-btn" class="btn btn-tuni hidden" name="submit">
+            <?= $messages['uploadFile'] ?>
         </button>
     </form>
 </div>
