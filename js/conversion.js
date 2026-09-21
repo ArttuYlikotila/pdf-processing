@@ -1,3 +1,5 @@
+const fileInput = document.getElementById('fileToUpload');
+const startConversionBtn = document.getElementById('start-conversion-btn');
 const form = document.getElementById('processing-form');
 const convertButton = document.getElementById('pdfa-convert-button');
 const statusContainer = document.getElementById('conversion-status');
@@ -183,6 +185,42 @@ function handleFileConversion() {
 
   convertFile(formData, successText, failedText);
 }
+
+// Change event listener for the file input element
+fileInput?.addEventListener('change', () => {
+  if (fileInput.files.length > 0) {
+    const label = document.querySelector('.file-upload label');
+    const icon = document.createElement('i');
+    icon.classList.add('bi', 'bi-cloud-upload');
+    icon.setAttribute('ariaHidden', true);
+
+    if (fileInput.files[0].type !== 'application/pdf') {
+      // Add class in case it has been removed previously to hide the button
+      startConversionBtn.classList.add('hidden');
+
+      label.textContent = label.dataset.fileNotPdf;
+      label.prepend(icon);
+      icon.classList.add('error');
+      label.classList.add('error', 'border-error');
+      return;
+    }
+
+    // Remove classes in case they has been set previously to reset the look of the paragraph
+    label.classList.remove('error');
+    label.classList.remove('border-error');
+    icon.classList.remove('error');
+
+    const fileName = document.createElement('span');
+    fileName.classList.add('fw-bold', 'd-block');
+    fileName.textContent = fileInput.files[0].name;
+
+    label.textContent = label.dataset.uploadedFile;
+    label.prepend(icon);
+    label.append(fileName);
+
+    startConversionBtn.classList.remove('hidden');
+  }
+});
 
 // Click event listener for starting the file conversion process
 convertButton?.addEventListener('click', (event) => {
