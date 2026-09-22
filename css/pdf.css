@@ -8,8 +8,7 @@
  * the LICENSE.txt file that was distributed with this source code.
  */
 
-/* TODO: This setting is probably not a proper setting and could be removed, has to checked */
-/* @CHARSET "UTF-8"; */
+@charset "UTF-8";
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
