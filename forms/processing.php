@@ -47,36 +47,12 @@ if ($simplified_conversion) {
 
             <button
                 type="submit"
-                class="btn btn-danger"
+                class="btn btn-tuni"
                 name="delete_file"
                 value="<?= $messages['deleteButton'] ?>"
             >
                 <?= $messages['deleteButton'] ?>
             </button>
-        </div>
-
-        <div class="conversion-info mt-3">
-            <div
-                id="conversion-status"
-                class="message-container message-success hidden"
-                role="alert"
-                data-in-progress="<?= $messages['conversionInProgress'] ?>"
-                data-success="<?= $messages['conversionSuccess'] ?>"
-                data-failed="<?= $messages['conversionFailed'] ?>"
-            >
-                <i id="conversion-status-icon" class="bi bi-arrow-repeat conversion-spinner" aria-hidden="true"></i>
-                <span id="conversion-status-text">
-                    <?= $messages['conversionIdle'] ?>
-                </span>
-            </div>
-
-            <div
-                id="conversion-result"
-                class="message-container message-success hidden"
-                data-download-label="<?= $messages['downloadButton'] ?>"
-                data-ready-label="<?= $messages['downloadLabel'] ?>"
-            >
-            </div>
         </div>
     </form>
 </div>
