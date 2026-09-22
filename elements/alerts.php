@@ -28,7 +28,7 @@ if (!empty($errorMessage)) {
 if (!empty($infoMessage)) {
 ?>
 <div class="container content-card">
-    <div class="message-container message-info">
+    <div class="message-container message-success">
         <?php echo htmlspecialchars($infoMessage, ENT_QUOTES, 'UTF-8') ?>
     </div>
 </div>
@@ -46,7 +46,7 @@ if (!empty($infoMessage)) {
         data-success="<?= $messages['conversionSuccess'] ?>"
         data-failed="<?= $messages['conversionFailed'] ?>"
     >
-        <i id="conversion-status-icon" class="bi bi-arrow-repeat conversion-spinner" aria-hidden="true"></i>
+        <i id="conversion-status-icon" aria-hidden="true"></i>
         <span id="conversion-status-text">
             <?= $messages['conversionIdle'] ?>
         </span>
