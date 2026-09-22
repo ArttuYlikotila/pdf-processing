@@ -94,7 +94,7 @@ function renderDownloadBtn(data) {
  */
 function createDownloadBtn(text, url) {
   const downloadBtn = document.createElement('button');
-  downloadBtn.classList.add('btn', 'btn-success');
+  downloadBtn.classList.add('btn', 'btn-download');
   downloadBtn.textContent = text;
 
   const link = document.createElement('a');

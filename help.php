@@ -23,7 +23,7 @@ include_once("elements/header.php");
     <h1><?php echo $messages['headline'] ?></h1>
     <p><?php echo($messages['helpFileBrowse']) ?></p>
 
-    <div class="info-text mb-3">
+    <div class="info-container mb-3">
         <?php echo($messages['helpIntroAlert']) ?>
     </div>
 

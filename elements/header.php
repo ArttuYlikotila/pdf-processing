@@ -89,4 +89,4 @@
                 </div>
             </nav>
         </header>
-        <main class="top-buffer bottom-buffer">
+        <main class="top-buffer">

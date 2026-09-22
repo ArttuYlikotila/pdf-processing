@@ -87,3 +87,34 @@ nav *:focus {
 .lang-selector a.chosen {
   font-weight: 900;
 }
+
+@media screen and (max-width: 992px) {
+  .page-header a.logo-link {
+    padding-bottom: 0.25rem;
+  }
+
+  .logo {
+    padding-left: 0;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 0.5rem;
+  }
+
+  .lang-selector {
+    margin: 0.5rem 0.75rem 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lang-selector a {
+    padding: 9px 0;
+  }
+
+  .lang-selector span {
+    display: none;
+  }
+}
