@@ -35,3 +35,21 @@ if (!empty($infoMessage)) {
 
 <?php
 }
+?>
+
+<div class="container content-card conversion-info hidden">
+    <div
+        id="conversion-status"
+        class="message-container message-success hidden"
+        role="alert"
+        data-in-progress="<?= $messages['conversionInProgress'] ?>"
+        data-success="<?= $messages['conversionSuccess'] ?>"
+        data-failed="<?= $messages['conversionFailed'] ?>"
+    >
+        <i id="conversion-status-icon" class="bi bi-arrow-repeat conversion-spinner" aria-hidden="true"></i>
+        <span id="conversion-status-text">
+            <?= $messages['conversionIdle'] ?>
+        </span>
+    </div>
+</div>
+<?php

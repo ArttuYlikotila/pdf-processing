@@ -1,3 +1,4 @@
+const conversionInfoContainer = document.querySelector('.conversion-info');
 const fileInput = document.getElementById('fileToUpload');
 const startConversionBtn = document.getElementById('start-conversion-btn');
 const form = document.getElementById('processing-form');
@@ -5,7 +6,6 @@ const convertButton = document.getElementById('pdfa-convert-button');
 const statusContainer = document.getElementById('conversion-status');
 const statusText = document.getElementById('conversion-status-text');
 const statusIcon = document.getElementById('conversion-status-icon');
-const resultContainer = document.getElementById('conversion-result');
 
 /**
  * Add or remove "hidden" CSS class to/from HTML element
@@ -56,32 +56,46 @@ function setStatus(type, text, spinning = false) {
 };
 
 /**
- * Render contents to #conversion-result container
+ * Replace convert button in DOM with download button
  *
- * @param {Object} data
+ * @param {Object} data JSON object containing information about the conversion process
  */
-function renderDownload(data) {
-  resultContainer.innerHTML = '';
-
+function renderDownloadBtn(data) {
   if (!data || data.status !== 'success' || !data.downloadUrl) {
-    toggleElementHidden(resultContainer, true);
     return;
   }
 
-  const displayName = data.displayName ? `(${data.displayName})` : '';
+  const btnContainer = document.querySelector('.control-buttons');
 
-  const icon = document.createElement("i");
-  icon.classList.add("bi", "bi-box-arrow-down");
-  icon.setAttribute("aria-hidden", true);
+  // Remove the convert file button from DOM
+  btnContainer.firstElementChild.remove();
 
-  const link = document.createElement("a");
-  link.href = data.downloadUrl;
-  link.classList.add("alert-link");
-  link.textContent = `${resultContainer.dataset.readyLabel} ${displayName}`;
-
-  resultContainer.append(icon, link);
-  toggleElementHidden(resultContainer, false);
+  // Add download button to the DOM
+  btnContainer.prepend(createDownloadBtn(btnContainer.dataset.readyLabel, data.downloadUrl));
 };
+
+/**
+ * Create button used for downloading the converted file
+ *
+ * @param {string} text Text shown within the button
+ * @param {string} url Url for the href attribute of the download link
+ * @returns {HTMLButtonElement}
+ */
+function createDownloadBtn(text, url) {
+  const downloadBtn = document.createElement('button');
+  downloadBtn.classList.add('btn', 'btn-success');
+  downloadBtn.textContent = text;
+
+  const link = document.createElement('a');
+  link.href = url;
+
+  downloadBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    link.click();
+  });
+
+  return downloadBtn;
+}
 
 /**
  * Handle finishing the conversion process
@@ -97,7 +111,7 @@ function handleFinalStatus(data, successText, failedText) {
     setStatus('danger', data.message || failedText, false);
   }
 
-  renderDownload(data);
+  renderDownloadBtn(data);
   statusContainer.querySelector('.spinner-border').remove();
   convertButton.innerHTML = convertButton.dataset.textContent;
 };
@@ -181,7 +195,7 @@ function handleFileConversion() {
 
   convertButton.disabled = true;
   setStatus('info', inProgressText, true);
-  toggleElementHidden(resultContainer, true);
+  toggleElementHidden(conversionInfoContainer, false);
 
   convertFile(formData, successText, failedText);
 }

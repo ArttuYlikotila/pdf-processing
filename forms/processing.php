@@ -33,7 +33,7 @@ if ($simplified_conversion) {
 
         <?php include 'elements/metadata.php'; ?>
 
-        <div class="control-buttons">
+        <div class="control-buttons" data-ready-label="<?= $messages['downloadLabel'] ?>">
             <button
                 type="submit"
                 class="btn btn-tuni"
