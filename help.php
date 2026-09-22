@@ -1,6 +1,7 @@
 <?php
 /**
  * (c) 2017 Technische Universität Berlin
+ * (c) 2025-2026 Tampere University
  *
  * This software is licensed under GNU General Public License version 3 or later.
  *
