@@ -113,6 +113,7 @@ function handleFinalStatus(data, successText, failedText) {
 
   renderDownloadBtn(data);
   statusContainer.querySelector('.spinner-border').remove();
+  statusContainer.querySelector('.spinner-message').remove();
   convertButton.innerHTML = convertButton.dataset.textContent;
 };
 
@@ -129,7 +130,7 @@ function createSpinner() {
   // TODO: it should be considered if the content of this message could be improved
   accessibilityMessage.textContent = convertButton.dataset.inProgress;
   accessibilityMessage.setAttribute("role", "status");
-  accessibilityMessage.classList.add("visually-hidden");
+  accessibilityMessage.classList.add('spinner-message', 'visually-hidden');
 
   const fragment = document.createDocumentFragment();
   fragment.append(spinner, accessibilityMessage);
