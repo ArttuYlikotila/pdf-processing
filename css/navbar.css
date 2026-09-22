@@ -1,0 +1,89 @@
+/**
+ * (c) 2017 Technische Universität Berlin
+ * (c) 2025-2026 Tampere University
+ *
+ * This software is licensed under GNU General Public License version 3 or later.
+ *
+ * For the full copyright and license information,
+ * please see https://www.gnu.org/licenses/gpl-3.0.html or read
+ * the LICENSE.txt file that was distributed with this source code.
+ */
+
+nav *:focus {
+  outline: 2px dashed #fff;
+  outline-offset: 2px;
+}
+
+.page-header {
+  background-color: #4e008e;
+  border-bottom: none;
+  box-shadow: 0 6px 18px rgba(78, 0, 142, 0.2);
+}
+
+.page-header a.logo-link {
+  padding-bottom: 0.75rem;
+}
+
+.page-header a,
+.page-header a:visited {
+  color: #ffffff;
+  text-decoration: none;
+  line-height: inherit;
+}
+
+.logo {
+  height: 4rem;
+  width: auto;
+  padding: 0 0.7rem;
+  object-fit: contain;
+}
+
+.navbar-toggler:focus {
+  color: #fff;
+  outline: 2px solid #fff!important;
+  box-shadow: none;
+}
+
+.navbar-toggler i {
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-header .nav-links a {
+  color: #efe6ff;
+  border-radius: 20px;
+  padding: 9px 12px;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.page-header .nav-links a:hover,
+.page-header .nav-links a:focus {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(78, 0, 142, 0.16);
+}
+
+.lang-selector {
+  color: #efe6ff;
+  text-align: right;
+  white-space: nowrap;
+  margin-left: auto;
+  margin-right: 0.7rem;
+}
+
+.lang-selector a {
+  font-weight: 600;
+}
+
+.lang-selector a:hover {
+  text-decoration: underline;
+}
+
+.lang-selector a.chosen {
+  font-weight: 900;
+}
