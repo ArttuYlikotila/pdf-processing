@@ -17,10 +17,16 @@
   width: 15.5rem;
 }
 
-.btn-tuni {
+.btn-tuni,
+.btn-tuni:disabled {
   background-color: var(--tuni-purple);
   border-color: var(--tuni-purple);
   color: #fff;
+}
+
+.btn-tuni:disabled {
+  pointer-events: none;
+  opacity: initial;
 }
 
 .btn-tuni:hover,
@@ -28,14 +34,6 @@
   background-color: #3b006c;
   border-color: #3b006c;
   color: #fff;
-}
-
-.btn-tuni:disabled {
-  background-color: var(--tuni-purple);
-  border-color: var(--tuni-purple);
-  color: #fff;
-  pointer-events: none;
-  opacity: initial;
 }
 
 .btn-tuni:active {

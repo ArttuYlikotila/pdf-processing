@@ -75,10 +75,6 @@ nav *:focus-visible {
   margin-right: 0.7rem;
 }
 
-.lang-selector a {
-  font-weight: 600;
-}
-
 .lang-selector a:hover {
   text-decoration: underline;
 }

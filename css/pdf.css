@@ -32,11 +32,7 @@ h1 {
   letter-spacing: 0.5px;
   margin-top: 0.5rem;
   margin-bottom: 0.75rem;
-  font-size: 1.5rem;
-}
-
-label {
-  font-weight: 400;
+  font-size: 1.75rem;
 }
 
 /* Hide the input from view but keep it in DOM so that it can be activated */
@@ -84,13 +80,6 @@ input[type="file"] {
   margin-bottom: 0.5rem;
 }
 
-.file-upload + button {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  width: 20rem;
-  max-width: 100%;
-}
-
 .file-upload label {
   background-color: #ffffff;
   border: 2px dashed #4a5568;
@@ -129,6 +118,13 @@ input[type="file"] {
   color: var(--tuni-purple);
 }
 
+.file-upload + button {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  width: 20rem;
+  max-width: 100%;
+}
+
 .form-control {
   border-color: #dfe3eb;
   box-shadow: none;
@@ -138,6 +134,13 @@ input[type="file"] {
 .form-control:focus-visible {
   border-color: var(--tuni-purple);
   box-shadow: 0 0 0 2px rgba(78, 0, 142, 0.2);
+}
+
+.char-counter {
+  text-align: right;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0!important;
 }
 
 .info-container {
@@ -167,19 +170,12 @@ input[type="file"] {
   color: #055160;
 }
 
-.conversion-info i {
-  padding: 0.5rem 0.25rem;
-}
-
-#conversion-status span.spinner-border {
+.message-container span.spinner-border {
   margin: 0 0.5rem;
 }
 
-.char-counter {
-  text-align: right;
-  font-size: 0.9rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0!important;
+.conversion-info i {
+  padding: 0.5rem 0.25rem;
 }
 
 .control-buttons {
@@ -223,10 +219,7 @@ input[type="file"] {
 
   .control-buttons button {
     width: 100%;
-    margin-bottom: 0.5rem;
-  }
-
-  .control-buttons button {
     margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
