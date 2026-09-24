@@ -38,7 +38,7 @@
   text-decoration: underline;
 }
 
-.footer a:focus {
+.footer a:focus-visible {
   outline: 2px dashed #000000;
   outline-offset: 4px;
 }

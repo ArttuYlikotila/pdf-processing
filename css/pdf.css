@@ -17,7 +17,7 @@ body {
   color: #2c3e50;
 }
 
-main a:focus, main button:focus {
+main a:focus-visible, main button:focus-visible {
   outline: 2px dashed #000000!important;
   outline-offset: 2px;
 }
@@ -132,7 +132,7 @@ input[type="file"] {
 }
 
 .btn-tuni:hover,
-.btn-tuni:focus {
+.btn-tuni:focus-visible {
   background-color: #3b006c;
   border-color: #3b006c;
   color: #fff;
@@ -146,6 +146,12 @@ input[type="file"] {
   opacity: initial;
 }
 
+.btn-tuni:active {
+  background-color: #420871 !important;
+  border-color: #4e008e;
+  color: #fff!important;
+}
+
 .btn-download {
   background-color: #137d59;
   border-color: #0a9b6a;
@@ -153,9 +159,15 @@ input[type="file"] {
 }
 
 .btn-download:hover,
-.btn-download:focus {
+.btn-download:focus-visible {
   background-color: #16503c;
   border-color: #0a7e57;
+  color: #fff;
+}
+
+.btn-download:active {
+  background-color: #354348!important;
+  color: #fff!important;
 }
 
 .form-control {

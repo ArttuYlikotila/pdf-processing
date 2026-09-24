@@ -9,8 +9,8 @@
  * the LICENSE.txt file that was distributed with this source code.
  */
 
-nav *:focus {
-  outline: 2px dashed #fff;
+nav *:focus-visible {
+  outline: 2px dashed #fff!important;
   outline-offset: 2px;
 }
 
@@ -38,7 +38,7 @@ nav *:focus {
   object-fit: contain;
 }
 
-.navbar-toggler:focus {
+.navbar-toggler:focus-visible {
   color: #fff;
   outline: 2px solid #fff!important;
   box-shadow: none;
@@ -61,8 +61,7 @@ nav *:focus {
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.page-header .nav-links a:hover,
-.page-header .nav-links a:focus {
+.page-header .nav-links a:hover {
   background-color: rgba(255, 255, 255, 0.18);
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(78, 0, 142, 0.16);
