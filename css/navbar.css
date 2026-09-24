@@ -15,7 +15,7 @@ nav *:focus-visible {
 }
 
 .page-header {
-  background-color: #4e008e;
+  background-color: var(--tuni-purple);
   border-bottom: none;
   box-shadow: 0 6px 18px rgba(78, 0, 142, 0.2);
 }

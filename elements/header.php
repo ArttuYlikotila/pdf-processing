@@ -25,9 +25,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
         <!-- Additional css -->
+        <link rel="stylesheet" href="css/pdf.css">
         <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/footer.css">
-        <link rel="stylesheet" href="css/pdf.css">
         <link rel="stylesheet" href="css/buttons.css">
 
         <!-- Favicon -->

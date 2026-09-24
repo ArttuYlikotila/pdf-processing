@@ -18,8 +18,8 @@
 }
 
 .btn-tuni {
-  background-color: #4e008e;
-  border-color: #4e008e;
+  background-color: var(--tuni-purple);
+  border-color: var(--tuni-purple);
   color: #fff;
 }
 
@@ -31,8 +31,8 @@
 }
 
 .btn-tuni:disabled {
-  background-color: #4e008e;
-  border-color: #4e008e;
+  background-color: var(--tuni-purple);
+  border-color: var(--tuni-purple);
   color: #fff;
   pointer-events: none;
   opacity: initial;
@@ -40,7 +40,7 @@
 
 .btn-tuni:active {
   background-color: #420871 !important;
-  border-color: #4e008e;
+  border-color: var(--tuni-purple);
   color: #fff!important;
 }
 

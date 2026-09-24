@@ -11,6 +11,10 @@
 
 @charset "UTF-8";
 
+:root {
+  --tuni-purple: #4e008e;
+}
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f4f7fb;
@@ -89,8 +93,8 @@ input[type="file"] {
 
 .file-upload label {
   background-color: #ffffff;
-  border: 2px dashed #a196a6;
-  border-radius: 0.5rem;
+  border: 2px dashed #4a5568;
+  border-radius: 0.625rem;
   padding: 1.75rem 0;
   width: 100%;
   font-weight: 600;
@@ -107,14 +111,22 @@ input[type="file"] {
 }
 
 .file-upload label:has(+ input:focus-visible) {
-  background-color: #f5f3f5;
-  border: 2px dashed #3b006c;
+  background-color: #faf6fa;
+  border: 2px dashed var(--tuni-purple);
+  color: var(--tuni-purple);
 }
 
 .file-upload label:hover, .file-upload.drag-on-drop-area label {
-  border-color: #3b006c;
-  background-color: #f5f3f5;
+  border-color: var(--tuni-purple);
+  background-color: #faf6fa;
+  color: var(--tuni-purple);
   cursor: pointer;
+}
+
+.file-upload label:hover i,
+.file-upload.drag-on-drop-area label i,
+.file-upload label:has(+ input:focus-visible) i {
+  color: var(--tuni-purple);
 }
 
 .form-control {
@@ -124,7 +136,7 @@ input[type="file"] {
 }
 
 .form-control:focus-visible {
-  border-color: #4e008e;
+  border-color: var(--tuni-purple);
   box-shadow: 0 0 0 2px rgba(78, 0, 142, 0.2);
 }
 
