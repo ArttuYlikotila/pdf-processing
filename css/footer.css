@@ -40,5 +40,5 @@
 
 .footer a:focus-visible {
   outline: 2px dashed #000000;
-  outline-offset: 4px;
+  outline-offset: 3px;
 }

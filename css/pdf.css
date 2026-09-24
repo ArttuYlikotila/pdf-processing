@@ -19,7 +19,28 @@ body {
 
 main a:focus-visible, main button:focus-visible {
   outline: 2px dashed #000000!important;
-  outline-offset: 2px;
+  outline-offset: 3px;
+}
+
+h1 {
+  color: inherit;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+label {
+  font-weight: 400;
+}
+
+/* Hide the input from view but keep it in DOM so that it can be activated */
+input[type="file"] {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  opacity: 0;
 }
 
 .content-card {
@@ -39,15 +60,6 @@ main a:focus-visible, main button:focus-visible {
   margin-top: 10px;
 }
 
-h1 {
-  color: inherit;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-top: 0.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 1.5rem;
-}
-
 .top-buffer {
   margin-top: 20px;
 }
@@ -56,8 +68,12 @@ h1 {
   display: none;
 }
 
-label {
-  font-weight: 400;
+.error {
+  color: #d01e2f!important;
+}
+
+.border-error {
+  border-color: #d01e2f!important;
 }
 
 .file-upload {
@@ -90,7 +106,7 @@ label {
   font-size: 2.5rem;
 }
 
-.file-upload label:has(+ input:focus) {
+.file-upload label:has(+ input:focus-visible) {
   background-color: #f5f3f5;
   border: 2px dashed #3b006c;
 }
@@ -101,82 +117,13 @@ label {
   cursor: pointer;
 }
 
-/* Hide the input from view but keep it in DOM so that it can be activated */
-input[type="file"] {
-  height: 1px;
-  width: 1px;
-  position: absolute;
-  opacity: 0;
-}
-
-.error {
-  color: #d01e2f!important;
-}
-
-.border-error {
-  border-color: #d01e2f!important;
-}
-
-.btn {
-  border-radius: 0.5rem;
-  padding: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  width: 15.5rem;
-}
-
-.btn-tuni {
-  background-color: #4e008e;
-  border-color: #4e008e;
-  color: #fff;
-}
-
-.btn-tuni:hover,
-.btn-tuni:focus-visible {
-  background-color: #3b006c;
-  border-color: #3b006c;
-  color: #fff;
-}
-
-.btn-tuni:disabled {
-  background-color: #4e008e;
-  border-color: #4e008e;
-  color: #fff;
-  pointer-events: none;
-  opacity: initial;
-}
-
-.btn-tuni:active {
-  background-color: #420871 !important;
-  border-color: #4e008e;
-  color: #fff!important;
-}
-
-.btn-download {
-  background-color: #137d59;
-  border-color: #0a9b6a;
-  color: #fff;
-}
-
-.btn-download:hover,
-.btn-download:focus-visible {
-  background-color: #16503c;
-  border-color: #0a7e57;
-  color: #fff;
-}
-
-.btn-download:active {
-  background-color: #354348!important;
-  color: #fff!important;
-}
-
 .form-control {
   border-color: #dfe3eb;
   box-shadow: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-control:focus {
+.form-control:focus-visible {
   border-color: #4e008e;
   box-shadow: 0 0 0 2px rgba(78, 0, 142, 0.2);
 }
