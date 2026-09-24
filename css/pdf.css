@@ -111,7 +111,7 @@ input[type="file"] {
   border: 2px dashed #3b006c;
 }
 
-.file-upload label:hover {
+.file-upload label:hover, .file-upload.drag-on-drop-area label {
   border-color: #3b006c;
   background-color: #f5f3f5;
   cursor: pointer;

@@ -192,8 +192,8 @@ async function convertFile(metadata, successText, failedText) {
 /**
  * Handle all the actions needed for the file conversion process
  */
-function handleFileConversion() {
-  convertButton.textContent = "";
+function startFileConversion() {
+  convertButton.textContent = '';
   convertButton.appendChild(createSpinner());
 
   const inProgressText = statusContainer.dataset.inProgress;
@@ -212,46 +212,103 @@ function handleFileConversion() {
   convertFile(formData, successText, failedText);
 }
 
+/**
+ * Handle all the actions related to the file input
+ */
+function handleFileInput() {
+  const label = document.querySelector('.file-upload label');
+  const icon = document.createElement('i');
+  icon.classList.add('bi', 'bi-cloud-upload');
+  icon.setAttribute('ariaHidden', true);
+
+  if (fileInput.files[0].type !== 'application/pdf') {
+    // Add class in case it has been removed previously
+    startConversionBtn.classList.add('hidden');
+    toggleLabelContent(label, icon, true);
+    return;
+  }
+
+  const fileName = document.createElement('span');
+  fileName.classList.add('d-block');
+  fileName.textContent = fileInput.files[0].name;
+
+  toggleLabelContent(label, icon, false, fileName);
+  startConversionBtn.classList.remove('hidden');
+}
+
+/**
+ * Toggle the contents of the file input label based on parameters
+ *
+ * @param {HTMLLabelElement} label Label element of the file input element
+ * @param {HTMLElement} icon Icon within the label element
+ * @param {boolean} error Boolean indicating whether the upload process has encountered an error
+ * @param {HTMLSpanElement} fileName Span element containing the file name of the uploaded PDF, defaults to null
+ */
+function toggleLabelContent(label, icon, error, fileName = null) {
+  icon.classList.toggle('error', error);
+  label.classList.toggle('error', error);
+  label.classList.toggle('border-error', error);
+
+  label.textContent = error ? label.dataset.fileNotPdf : label.dataset.uploadedFile;
+  label.prepend(icon);
+
+  fileName && label.append(fileName);
+}
+
+/**
+ * Stop propagation and prevent default during drag-and-drop event
+ *
+ * @param {Event} event Drag-and-drop event
+ */
+function preventPropagation(event) {
+  event.stopPropagation();
+  event.preventDefault();
+}
+
 // Change event listener for the file input element
 fileInput?.addEventListener('change', () => {
   if (fileInput.files.length > 0) {
-    const label = document.querySelector('.file-upload label');
-    const icon = document.createElement('i');
-    icon.classList.add('bi', 'bi-cloud-upload');
-    icon.setAttribute('ariaHidden', true);
+    handleFileInput();
+  }
+});
 
-    if (fileInput.files[0].type !== 'application/pdf') {
-      // Add class in case it has been removed previously to hide the button
-      startConversionBtn.classList.add('hidden');
+// Dragenter event listener for the drop-area used for file uploading
+document.querySelector('.file-upload')?.addEventListener('dragenter', (event) => {
+  preventPropagation(event);
+  document.querySelector('.file-upload').classList.add('drag-on-drop-area');
+});
 
-      label.textContent = label.dataset.fileNotPdf;
-      label.prepend(icon);
-      icon.classList.add('error');
-      label.classList.add('error', 'border-error');
-      return;
-    }
+// Dragover event listener for the drop-area used for file uploading
+document.querySelector('.file-upload')?.addEventListener('dragover', (event) => {
+  preventPropagation(event);
+});
 
-    // Remove classes in case they has been set previously to reset the look of the paragraph
-    label.classList.remove('error');
-    label.classList.remove('border-error');
-    icon.classList.remove('error');
+// Dragleave event listener for the drop-area used for file uploading
+document.querySelector('.file-upload')?.addEventListener('dragleave', (event) => {
+  preventPropagation(event);
+  const dropArea = document.querySelector('.file-upload');
 
-    const fileName = document.createElement('span');
-    fileName.classList.add('fw-bold', 'd-block');
-    fileName.textContent = fileInput.files[0].name;
+  if (!dropArea.contains(event.relatedTarget)) {
+    dropArea.classList.remove('drag-on-drop-area');
+  }
+});
 
-    label.textContent = label.dataset.uploadedFile;
-    label.prepend(icon);
-    label.append(fileName);
+// Drop event listener for the drop-area used for file uploading
+document.querySelector('.file-upload')?.addEventListener('drop', (event) => {
+  preventPropagation(event);
+  document.querySelector('.file-upload').classList.remove('drag-on-drop-area');
+  const files = event.dataTransfer.files;
 
-    startConversionBtn.classList.remove('hidden');
+  if (files.length > 0) {
+    fileInput.files = files;
+    handleFileInput();
   }
 });
 
 // Click event listener for starting the file conversion process
 convertButton?.addEventListener('click', (event) => {
   event.preventDefault();
-  handleFileConversion();
+  startFileConversion();
 });
 
 // Input event listener for the #description <textarea> that updates the associated character counter element
