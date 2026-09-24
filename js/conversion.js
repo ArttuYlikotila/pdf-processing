@@ -19,14 +19,14 @@ const statusText = document.getElementById('conversion-status-text');
 const statusIcon = document.getElementById('conversion-status-icon');
 
 /**
- * Add or remove "hidden" CSS class to/from HTML element
+ * Add or remove 'hidden' CSS class to/from HTML element
  *
  * @param {HTMLElement} element
  * @param {boolean} hidden Boolean indicating if the hidden class should be added or removed
  */
 function toggleElementHidden(element, hidden) {
   element.classList.toggle('hidden', hidden);
-};
+}
 
 /**
  * Replace current class names of status icon with new class names
@@ -35,7 +35,7 @@ function toggleElementHidden(element, hidden) {
  */
 function resetIcon(classes) {
   statusIcon.className = classes.join(' ');
-};
+}
 
 /**
  * Set class names and text content in the #conversion-status container
@@ -64,7 +64,7 @@ function setStatus(type, text, spinning = false) {
 
   resetIcon(iconClasses);
   toggleElementHidden(statusContainer, false);
-};
+}
 
 /**
  * Replace convert button in DOM with download button
@@ -83,7 +83,7 @@ function renderDownloadBtn(data) {
 
   // Add download button to the DOM
   btnContainer.prepend(createDownloadBtn(btnContainer.dataset.readyLabel, data.downloadUrl));
-};
+}
 
 /**
  * Create button used for downloading the converted file
@@ -126,7 +126,7 @@ function handleFinalStatus(data, successText, failedText) {
   statusContainer.querySelector('.spinner-border').remove();
   statusContainer.querySelector('.spinner-message').remove();
   convertButton.innerHTML = convertButton.dataset.textContent;
-};
+}
 
 /**
  * Create and return elements for adding a spinner wrapped in document fragment
@@ -134,13 +134,13 @@ function handleFinalStatus(data, successText, failedText) {
  * @returns {HTMLDocumentFragment}
  */
 function createSpinner() {
-  const spinner = document.createElement("span");
-  spinner.classList.add("spinner-border", "spinner-border-sm");
-  spinner.setAttribute("aria-hidden", true);
-  const accessibilityMessage = document.createElement("span");
+  const spinner = document.createElement('span');
+  spinner.classList.add('spinner-border', 'spinner-border-sm');
+  spinner.setAttribute('aria-hidden', true);
+  const accessibilityMessage = document.createElement('span');
   // TODO: it should be considered if the content of this message could be improved
   accessibilityMessage.textContent = convertButton.dataset.inProgress;
-  accessibilityMessage.setAttribute("role", "status");
+  accessibilityMessage.setAttribute('role', 'status');
   accessibilityMessage.classList.add('spinner-message', 'visually-hidden');
 
   const fragment = document.createDocumentFragment();
@@ -158,7 +158,7 @@ function createSpinner() {
 async function convertFile(metadata, successText, failedText) {
   try {
     const response = await fetch('convert.php', {
-      method: "POST",
+      method: 'POST',
       body: metadata,
       credentials: 'same-origin',
       signal: AbortSignal.timeout(6000) // should be 3 min === 180000
@@ -178,10 +178,10 @@ async function convertFile(metadata, successText, failedText) {
   }
   catch (error) {
     if (error.name === 'TimeoutError') {
-      console.warn("TIMEOUT ERROR");
+      console.warn('TIMEOUT ERROR');
     }
     // TODO: currently this branch is only visited in errors originating in JS code, fetch errors do not come here ever
-    console.log("IN THE ERROR ", error);
+    console.log('IN THE ERROR ', error);
     handleFinalStatus({ status: 'error', message: failedText }, successText, failedText);
   }
   finally {
@@ -312,7 +312,7 @@ convertButton?.addEventListener('click', (event) => {
 });
 
 // Input event listener for the #description <textarea> that updates the associated character counter element
-document.getElementById("description")?.addEventListener("input", (event) => {
+document.getElementById('description')?.addEventListener('input', (event) => {
   const textArea = event.target;
   const counter = textArea.nextElementSibling;
   const maxLength = textArea.maxLength;
