@@ -15,12 +15,12 @@
  * Input fields for additional metadata.
  */
 ?>
-<div class="info-container mb-3">
+<div class="info-container">
     <?= $messages['pdfaMetadataMessage'] ?>
 </div>
 
-<?php foreach ($configs['metadataField'] as $field): ?>
-    <div class="row top-buffer">
+<?php foreach ($configs['metadataField'] as $index => $field): ?>
+    <div class="row <?= $index === 0 ? 'top-buffer' : '' ?>">
         <label for="<?= $field ?>" class="col-form-label col-md-4 col-lg-3">
             <?= $messages[$field . 'Label'] ?>
         </label>
