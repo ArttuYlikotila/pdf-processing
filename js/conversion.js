@@ -161,7 +161,7 @@ async function convertFile(metadata, successText, failedText) {
       method: 'POST',
       body: metadata,
       credentials: 'same-origin',
-      signal: AbortSignal.timeout(6000) // should be 3 min === 180000
+      signal: AbortSignal.timeout(180000) // should be 3 min === 180000
     });
 
     if (!response.ok) {
@@ -169,7 +169,6 @@ async function convertFile(metadata, successText, failedText) {
     }
 
     const data = await response.json();
-    console.log(data);
 
     // TODO: could PHP process be changed so that in case of error the status of response would be in range 5**?
     if (data.status === 'success' || data.status === 'error') {
@@ -177,11 +176,11 @@ async function convertFile(metadata, successText, failedText) {
     }
   }
   catch (error) {
+    // TODO: this is here only for testing purposes, remove before making the application public
     if (error.name === 'TimeoutError') {
       console.warn('TIMEOUT ERROR');
     }
-    // TODO: currently this branch is only visited in errors originating in JS code, fetch errors do not come here ever
-    console.log('IN THE ERROR ', error);
+    // TODO: currently this branch is only visited in errors originating in JS code, fetch errors other than timeout do not come here ever
     handleFinalStatus({ status: 'error', message: failedText }, successText, failedText);
   }
   finally {
