@@ -38,7 +38,11 @@ nav *:focus-visible {
   object-fit: contain;
 }
 
-.navbar-toggler:focus-visible {
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
   color: #fff;
   outline: 2px solid #fff!important;
   box-shadow: none;
