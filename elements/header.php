@@ -76,14 +76,14 @@
                                 href="<?php echo htmlspecialchars($uri_parts[0], ENT_QUOTES, 'UTF-8') ?>?lang=en"
                                 <?php if ($lang === 'en') echo "class='chosen'" ?>
                             >
-                                Englanti
+                                <?= $messages['english'] ?>
                             </a>
                             <span> | </span>
                             <a
                                 href="<?php echo htmlspecialchars($uri_parts[0], ENT_QUOTES, 'UTF-8') ?>?lang=fi"
                                 <?php if ($lang === 'fi') echo "class='chosen'" ?>
                             >
-                                Suomi
+                                <?= $messages['finnish'] ?>
                             </a>
                         </div>
                     </div>
