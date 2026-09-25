@@ -15,8 +15,15 @@
   --tuni-purple: #4e008e;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
   background-color: #f4f7fb;
   color: #2c3e50;
 }
@@ -120,7 +127,7 @@ input[type="file"] {
 
 .file-upload + button {
   margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   width: 20rem;
   max-width: 100%;
 }
@@ -214,7 +221,7 @@ input[type="file"] {
   .control-buttons {
     flex-direction: column;
     gap: 0;
-    margin-bottom: 2.5rem;
+    /* margin-bottom: 2.5rem; */
   }
 
   .control-buttons button {
