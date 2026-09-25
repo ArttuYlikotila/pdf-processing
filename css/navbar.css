@@ -12,6 +12,7 @@
 nav *:focus-visible {
   outline: 2px dashed #fff!important;
   outline-offset: 2px;
+  box-shadow: none!important;
 }
 
 .page-header {
@@ -35,6 +36,7 @@ nav *:focus-visible {
   height: 4rem;
   width: auto;
   padding: 0 0.7rem;
+  margin-right: 1rem;
   object-fit: contain;
 }
 
@@ -62,7 +64,12 @@ nav *:focus-visible {
   color: #efe6ff;
   border-radius: 20px;
   padding: 9px 12px;
+  margin-right: 0.25rem;
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.page-header .nav-links a i {
+  margin-right: 0.25rem;
 }
 
 .page-header .nav-links a:hover {
